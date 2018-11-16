@@ -14,6 +14,7 @@ public class demo_movement : MonoBehaviour
     void Start()
     {
         m_BallRoll.AddListener(BallAction);
+        WebGLInput.captureAllKeyboardInput = false;
     }
 
     // Update is called once per frame
