@@ -1,16 +1,20 @@
-import React from 'react';
-import Blockly from 'node-blockly/browser';
-import BlocklyDrawer, {Block, Category, workspaceXML} from 'react-blockly-drawer';
+import React from 'react'
+import Blockly from 'node-blockly/browser'
+import BlocklyDrawer, {
+  Block,
+  Category,
+  workspaceXML
+} from 'react-blockly-drawer'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
-    super();
+    super()
 
     //State keeps track of outputted Unity messages and blocks in the workspace
     this.state = {
       currCode: '',
       currWorkspace: ''
-    };
+    }
 
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
@@ -24,60 +28,61 @@ class BlocklyWorkspace extends React.Component {
             colour: 160,
             tooltip: 'Moves the object one step',
             previousStatement: null,
-            nextStatement: null,
+            nextStatement: null
           })
         }
       },
       generator: block => {
-        const code = `console.log("Move1!!");`;
-        return [code, Blockly.JavaScript.ORDER_NONE]
+        const code = `console.log("Move1!!");`
+        console.log('What is ORDER_NONE? ', Blockly.JavaScript.ORDER_NONE)
+        return code
       }
-    };
+    }
 
-    this.runCode = this.runCode.bind(this);
-  };
+    this.runCode = this.runCode.bind(this)
+  }
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    console.log(this.state.currCode);
-    console.log(typeof this.state.currCode);
-  };
+    console.log('State of current code: ', this.state.currCode)
+    console.log('Type: ', typeof this.state.currCode)
+  }
 
   //False to prevent placed blocks from disappearing with each new state change
   shouldComponentUpdate() {
-    return false;
-  };
+    return false
+  }
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
     return (
       <div id="blockly-content">
         <BlocklyDrawer
-        tools={[this.helloWorld]}
-        onChange={(code, workspace) => {
-          console.log("CHANGING THE CODE: ", code)
-          this.setState({currCode: code, currWorkspace: workspace})
-        }}
-        appearance={
-          {
+          tools={[this.helloWorld]}
+          onChange={(code, workspace) => {
+            console.log('CHANGING THE CODE: ', code)
+            this.setState({currCode: code, currWorkspace: workspace})
+          }}
+          appearance={{
             categories: {
               Demo: {
                 colour: '270'
-              },
-            },
-          }
-        }
-      >
-        <Category name="Variables" custom="VARIABLE" />
-        <Category name="Values">
-          <Block type="math_number" />
-          <Block type="text" />
-        </Category>
-      </BlocklyDrawer>
-      <button type="button" onClick={()=>this.runCode()}>Run</button>
-    </div>
+              }
+            }
+          }}
+        >
+          <Category name="Variables" custom="VARIABLE" />
+          <Category name="Values">
+            <Block type="math_number" />
+            <Block type="text" />
+          </Category>
+        </BlocklyDrawer>
+        <button type="button" onClick={() => this.runCode()}>
+          Run
+        </button>
+      </div>
     )
-  };
-};
+  }
+}
 
-export default BlocklyWorkspace;
+export default BlocklyWorkspace
