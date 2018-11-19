@@ -1,17 +1,20 @@
 import React from 'react'
-
-// import {Navbar} from './components'
-// import Routes from './routes'
+import startFirebaseUI from './firebase'
 import UnityGame from './components/UnityGame'
 
-const App = () => {
-  return (
-    <div>
-      {/* <Navbar /> */}
-      {/* <Routes /> */}
-      <UnityGame />
-    </div>
-  )
+class App extends React.Component {
+  componentDidMount() {
+    startFirebaseUI('#firebaseui')
+  }
+
+  render() {
+    return (
+      <div>
+        <div id="firebaseui" />
+        <UnityGame />
+      </div>
+    )
+  }
 }
 
 export default App
