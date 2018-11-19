@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour {
 
+  UnityEvent m_SheepMove = new UnityEvent();
+
   public float speed;
+
+  public float duration = 1f;
+
+  float elapsedTime = Mathf.Infinity;
 
   Vector3 forward = new Vector3(0f, 0f, -10f);
   Vector3 backwards = new Vector3(-10f, 0f, 10f);
@@ -16,10 +23,11 @@ public class CharacterController : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
+    //m_SheepMove.AddListener(SheepMoveForward);
+  //  WebGLInput.captureAllKeyboardInput = false;
 
 
-		
-	}
+  }
 	
 	// Update is called once per frame
 	void Update () {
@@ -45,20 +53,26 @@ public class CharacterController : MonoBehaviour {
     //  transform.position += right * Time.deltaTime;
     //}
 
+    //if (Input.GetKeyDown(KeyCode.Space))
+    //{
+    //  m_SheepMove.Invoke();
+    //}
+
     SheepMoveForward();
-
-
 
   }
 
   void SheepMoveForward(){
 
-    //while(Time.time < 2){
+    elapsedTime = 0f;
 
+    if (elapsedTime < duration){
 
       transform.position += forward * Time.deltaTime;
       
-   // }
+      elapsedTime += Time.deltaTime;
+
+    }
 
   }
 }
