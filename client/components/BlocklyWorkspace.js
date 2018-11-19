@@ -21,14 +21,15 @@ class BlocklyWorkspace extends React.Component {
         init: function() {
           this.jsonInit({
             message0: 'Move 1 step',
-            output: 'String',
             colour: 160,
             tooltip: 'Moves the object one step',
+            previousStatement: null,
+            nextStatement: null,
           })
         }
       },
       generator: block => {
-        const code = `this.props.unitySendMessage('orb02_red', 'BallAction')`;
+        const code = `console.log("Move1!!");`;
         return [code, Blockly.JavaScript.ORDER_NONE]
       }
     };
@@ -38,7 +39,8 @@ class BlocklyWorkspace extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    eval(this.state.currCode);
+    console.log(this.state.currCode);
+    console.log(typeof this.state.currCode);
   };
 
   //False to prevent placed blocks from disappearing with each new state change
@@ -53,6 +55,7 @@ class BlocklyWorkspace extends React.Component {
         <BlocklyDrawer
         tools={[this.helloWorld]}
         onChange={(code, workspace) => {
+          console.log("CHANGING THE CODE: ", code)
           this.setState({currCode: code, currWorkspace: workspace})
         }}
         appearance={
