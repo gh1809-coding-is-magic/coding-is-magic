@@ -13,7 +13,7 @@ public class SheepWalk : MonoBehaviour
     Vector3 forward = new Vector3(0f, 0f, -10f);
     // Vector3 backwards = new Vector3(-10f, 0f, 10f);
     // Vector3 right = new Vector3(0f, 0f, 10f);
-    // Vector3 left = new Vector3(10f, 0f, 10f);
+    Vector3 left = new Vector3(10f, 0f, 10f);
     private Vector3 moveDirection = Vector3.zero;
 
     // Use this for initialization
@@ -38,11 +38,16 @@ public class SheepWalk : MonoBehaviour
         if (translation != 0 || rotation != 0)
         {
             anim.SetBool("isWalking", true);
-
         }
         else
         {
             anim.SetBool("isWalking", false);
+        }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            TurnNinety();
+        }
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            StartCoroutine(SheepMoveForward());
         }
     }
 
@@ -60,5 +65,13 @@ public class SheepWalk : MonoBehaviour
             yield return null;
         }
 
+    }
+    void TurnNinety() {
+        transform.Rotate(0, 90, 0);
+        anim.SetBool("isWalking", true);
+    }
+    void WalkBridge() {
+        transform.Translate(0, 0, 10f);
+        anim.SetBool("isWalking", true);
     }
 }
