@@ -11,9 +11,10 @@ public class SheepWalk : MonoBehaviour
     float elapsedTime = Mathf.Infinity;
 
     Vector3 forward = new Vector3(0f, 0f, -10f);
-    Vector3 backwards = new Vector3(-10f, 0f, 10f);
-    Vector3 right = new Vector3(0f, 0f, 10f);
-    Vector3 left = new Vector3(10f, 0f, 10f);
+    // Vector3 backwards = new Vector3(-10f, 0f, 10f);
+    // Vector3 right = new Vector3(0f, 0f, 10f);
+    // Vector3 left = new Vector3(10f, 0f, 10f);
+    private Vector3 moveDirection = Vector3.zero;
 
     // Use this for initialization
     void Start()
@@ -35,11 +36,11 @@ public class SheepWalk : MonoBehaviour
 
         if (translation != 0 || rotation != 0)
         {
-            anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", true);
         }
         else
         {
-            anim.SetBool("isWalking", true);
+            anim.SetBool("isWalking", false);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -54,7 +55,7 @@ public class SheepWalk : MonoBehaviour
         {
             transform.Translate(Vector3.forward * Time.deltaTime);
             elapsedTime += Time.deltaTime;
-            anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", true);
             yield return null;
         }
 
