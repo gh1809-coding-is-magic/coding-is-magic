@@ -457,6 +457,6 @@ sysinfo.txt
 # Assets/3D-[Ii]tems*
 # *.unity
 # *.asset
-Assets/
-!Assets/Scripts/
+Assets/*
+!Assets/Scripts/*
 ProjectSettings/
