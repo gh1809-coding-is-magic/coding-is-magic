@@ -452,3 +452,8 @@ sysinfo.txt
 *.unitypackage
 
 # End of https://www.gitignore.io/api/node,unity,csharp
+
+# 3D Assets
+Assets/3D-[Ii]tems*
+*.unity
+*.asset
