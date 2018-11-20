@@ -458,5 +458,4 @@ sysinfo.txt
 # *.unity
 # *.asset
 Assets/
-Assets/Scenes/
 !Assets/Scripts/
