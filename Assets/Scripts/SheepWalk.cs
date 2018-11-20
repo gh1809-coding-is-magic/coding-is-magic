@@ -25,6 +25,7 @@ public class SheepWalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 
