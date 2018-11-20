@@ -5,7 +5,7 @@ import BlocklyDrawer, {
   Category,
   workspaceXML
 } from 'react-blockly-drawer'
-import Spell, {move1} from './Spellbook.js'
+import spellConstructor, {move1} from './spellConstructor'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -19,7 +19,7 @@ class BlocklyWorkspace extends React.Component {
 
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
-    this.helloWorld = move1
+    this.helloWorld = move1()
 
     this.runCode = this.runCode.bind(this)
   }
@@ -28,6 +28,7 @@ class BlocklyWorkspace extends React.Component {
   runCode() {
     console.log('State of current code: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
+    eval(this.state.currCode)
   }
 
   //False to prevent placed blocks from disappearing with each new state change
