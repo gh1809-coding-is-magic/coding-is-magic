@@ -458,5 +458,5 @@ sysinfo.txt
 # *.unity
 # *.asset
 Assets/*
-!Assets/Scripts/*
+!/Assets/Scripts
 ProjectSettings/
