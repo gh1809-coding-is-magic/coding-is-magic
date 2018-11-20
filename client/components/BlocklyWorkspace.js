@@ -5,6 +5,7 @@ import BlocklyDrawer, {
   Category,
   workspaceXML
 } from 'react-blockly-drawer'
+import Spell, {move1} from './Spellbook.js'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -18,26 +19,7 @@ class BlocklyWorkspace extends React.Component {
 
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
-    this.helloWorld = {
-      name: 'Move 1 Step',
-      category: 'Movement',
-      block: {
-        init: function() {
-          this.jsonInit({
-            message0: 'Move 1 step',
-            colour: 160,
-            tooltip: 'Moves the object one step',
-            previousStatement: null,
-            nextStatement: null
-          })
-        }
-      },
-      generator: block => {
-        const code = `console.log("Move1!!");`
-        console.log('What is ORDER_NONE? ', Blockly.JavaScript.ORDER_NONE)
-        return code
-      }
-    }
+    this.helloWorld = move1
 
     this.runCode = this.runCode.bind(this)
   }
@@ -55,6 +37,8 @@ class BlocklyWorkspace extends React.Component {
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
+    console.log('Move1: ', move1)
+    console.log('Hello world: ', this.helloWorld)
     return (
       <div id="blockly-content">
         <BlocklyDrawer
