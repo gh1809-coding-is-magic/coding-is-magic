@@ -43,11 +43,10 @@ public class SheepWalk : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SheepMoveForward());
+    }
 
-        }
+    void BlockyMove() {
+        StartCoroutine(SheepMoveForward());
     }
     IEnumerator SheepMoveForward()
     {

@@ -28,7 +28,7 @@ class BlocklyWorkspace extends React.Component {
         }
       },
       generator: block => {
-        const code = `this.props.unitySendMessage('orb02_red', 'BallAction')`;
+        const code = `this.props.unitySendMessage('Sheep_Demo', 'BlocklyMove')`;
         return [code, Blockly.JavaScript.ORDER_NONE]
       }
     };
