@@ -456,3 +456,4 @@ sysinfo.txt
 # 3D Assets
 Assets/3D-[Ii]tems*
 *.unity
+*.asset
