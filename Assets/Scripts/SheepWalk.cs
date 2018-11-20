@@ -37,6 +37,7 @@ public class SheepWalk : MonoBehaviour
         if (translation != 0 || rotation != 0)
         {
             anim.SetBool("isWalking", true);
+
         }
         else
         {
