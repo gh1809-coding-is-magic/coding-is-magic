@@ -1,6 +1,7 @@
 const spellConstructor = obj => {
   return () => ({
     name: obj.name,
+    type: obj.type,
     category: obj.category,
     block: {
       init: function() {
@@ -16,41 +17,36 @@ export default spellConstructor
 // EXAMPLES OF PROPER USE
 
 export const move1 = spellConstructor({
-  name: 'Move1',
+  name: 'Move',
+  type:'block_type',
   category: 'Movement',
   block: {
     message0: 'Move 1 step',
-    output: 'String',
+   // output: 'String',
     colour: 160,
-    tooltip: 'Moves the object 1 step'
+    tooltip: 'Moves the object 1 step',
+    previousStatement: null,
+    nextStatement: null
   },
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove")`
 })
 
 export const forLoop = spellConstructor({
   name: 'For',
-  category: 'Movement',
+  category: 'Loops',
   block: {
-    message0: '%1 %2 %3',
+    message0: 'Do %2, %1 times.',
     args0: [
-    {
-      type: "field_number",
-      name: "REPEATS",
-      value: 0,
-      min: 1, 
-      max: 5
-    },
-    {
-      type: "input_value",
-      name: "NUMBER_REPEATS",
-      check: "Number",
-      align: "RIGHT"
-    },
-    {
-      type: "input_statements",
-      name: "STATEMENTS"
-    }
-  ],
+      {
+        type: 'field_dropdown',
+        name: 'REPEATS',
+        options: [["0", '0'], ["1", '1'], ["2", '2'], ["3", '3'], ["4", '4'], ["5", '5']]
+      },
+      {
+        type: 'input_statement',
+        name: 'STATEMENTS'
+      }
+    ],
     output: 'String',
     colour: 270,
     tooltip: 'Repeat an action to object as many times as you set'
