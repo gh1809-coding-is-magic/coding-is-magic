@@ -27,6 +27,37 @@ export const move1 = spellConstructor({
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove")`
 })
 
+export const forLoop = spellConstructor({
+  name: 'For',
+  category: 'Movement',
+  block: {
+    message0: '%1 %2 %3',
+    args0: [
+    {
+      type: "field_number",
+      name: "REPEATS",
+      value: 0,
+      min: 1, 
+      max: 5
+    },
+    {
+      type: "input_value",
+      name: "NUMBER_REPEATS",
+      check: "Number",
+      align: "RIGHT"
+    },
+    {
+      type: "input_statements",
+      name: "STATEMENTS"
+    }
+  ],
+    output: 'String',
+    colour: 270,
+    tooltip: 'Repeat an action to object as many times as you set'
+  },
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove")`
+})
+
 // const move1Block = spellConstructor(move1)()
 
 // const moveAny = spellConstructor({
