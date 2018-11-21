@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class SheepWalk : MonoBehaviour
 {
     static Animator anim;
-    public float speed = 50f;
+    public float speed = 7f;
     public float rotationSpeed = 75.0f;
     public float duration = 1f;
     float elapsedTime = Mathf.Infinity;
     public Quaternion TargetRotation;
-    Rigidbody rBody;
 
-    Vector3 forward = new Vector3(0f, 0f, -10f);
+    // Vector3 forward = new Vector3(0f, 0f, -10f);
     // Vector3 backwards = new Vector3(-10f, 0f, 10f);
-    Vector3 right = new Vector3(0f, 0f, 10f);
+    // Vector3 right = new Vector3(0f, 0f, 10f);
     // Vector3 left = new Vector3(10f, 0f, 10f);
     // private Vector3 moveDirection = Vector3.zero;
     public bool enter = true;
@@ -23,10 +23,6 @@ public class SheepWalk : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        _controller = GetComponent<CharacterController>();
-        // if (GetComponent<Rigidbody>()) {
-        //     rBody = GetComponent<Rigidbody>();
-        // }
     }
 
     // Update is called once per frame
@@ -55,8 +51,6 @@ public class SheepWalk : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) {
             StartCoroutine(SheepMoveForward());
         }
-    // Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-    // _controller.Move(move * Time.deltaTime * Speed);
     }
 
     void BlockyMove() {
@@ -77,24 +71,26 @@ public class SheepWalk : MonoBehaviour
         transform.Rotate(0, 90, 0);
         anim.SetBool("isWalking", true);
     }
-    	void OnCollisionEnter(Collision collision)
-    {
-			print("oh no. this is touching");
-		if (collision.gameObject.name == "Ocean 01 Blue")
-        Debug.Log("entered!!");
-            Destroy(collision.gameObject);
-            // transform.Translate(-10, -10, -10);
-    //     // ContactPoint contact = collision.contacts[0];
-    //     // Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-    //     // Vector3 pos = contact.point;
-	// 	// transform.Translate(Vector3.down * 5f * Time.deltaTime);
-    }
-    //    private void OnTriggerEnter(Collider other)
+    // 	void OnCollisionEnter(Collision collision)
     // {
-    //     if (enter)
-    //     {
-    //         print("print");
-    //         Debug.Log("entered");
-    //     }
+	// 		print("oh no. this is touching");
+	// 	if (collision.gameObject.name == "Plane")
+    //     Debug.Log("entered!!");
+    //         Destroy(collision.gameObject);
+    //         // transform.Translate(-10, -10, -10);
+    // //     // ContactPoint contact = collision.contacts[0];
+    // //     // Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+    // //     // Vector3 pos = contact.point;
+	// // 	// transform.Translate(Vector3.down * 5f * Time.deltaTime);
     // }
+       void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Plane")
+        {
+            print("print");
+            Debug.Log("entered");
+
+            SceneManager.LoadScene("Level_1");
+        }
+    }
 }
