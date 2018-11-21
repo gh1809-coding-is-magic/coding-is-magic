@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/demo-scene.unity
     guid: a9be4c43fa41da44a833150d95874f87
-  - enabled: 1
-    path: Assets/Scenes/green-scene.unity
+  - enabled: 0
+    path: Assets/Scenes/Pre_Level.unity
     guid: 2b6242a8e11831e47a5e5418a490e745
+  - enabled: 0
+    path: Assets/Scenes/LevelOneInstruct.unity
+    guid: e4041f8067fce44b0a92601a7ec7b40c
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: a7e651547ca1b4434a3cb89a5c53606e
   m_configObjects: {}

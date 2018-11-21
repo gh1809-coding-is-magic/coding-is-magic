@@ -5,7 +5,7 @@ import BlocklyDrawer, {
   Category,
   workspaceXML
 } from 'react-blockly-drawer'
-import spellConstructor, {move1} from './spellConstructor'
+import {move1, forLoop} from './spellConstructor'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -20,6 +20,7 @@ class BlocklyWorkspace extends React.Component {
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
     this.helloWorld = move1()
+    this.forLoops = forLoop()
 
     this.runCode = this.runCode.bind(this)
   }
@@ -43,7 +44,7 @@ class BlocklyWorkspace extends React.Component {
     return (
       <div id="blockly-content">
         <BlocklyDrawer
-          tools={[this.helloWorld]}
+          tools={[this.helloWorld, this.forLoops]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
