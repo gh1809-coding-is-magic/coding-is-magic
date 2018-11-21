@@ -29,7 +29,7 @@ export const move1 = spellConstructor({
 
 // const move1Block = spellConstructor(move1)()
 
-// const moveAny = {
+// const moveAny = spellConstructor({
 //   name: 'MoveAny',
 //   category: 'Movement',
 //   block: {
@@ -44,6 +44,6 @@ export const move1 = spellConstructor({
 //       'STEPS'
 //     )})')`
 //   }
-// }
+// })
 
 // const moveAnyBlock = spellConstructor(moveAny)()
