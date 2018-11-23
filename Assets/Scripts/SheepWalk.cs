@@ -12,6 +12,7 @@ public class SheepWalk : MonoBehaviour
     float elapsedTime = Mathf.Infinity;
     public Quaternion TargetRotation;
     public ParticleSystem ps;
+    public bool move = true;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -25,8 +26,10 @@ public class SheepWalk : MonoBehaviour
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
 
+        if (move) {
         transform.Translate(0, 0, translation);
         transform.Rotate(0, rotation, 0);
+        }
 
         if (translation != 0 || rotation != 0)
         {
@@ -72,6 +75,7 @@ public class SheepWalk : MonoBehaviour
         }
         if (other.gameObject.name == "Win")
         {
+            move = false;
             anim.SetBool("isWin", true);
             ps.Play();
         }
