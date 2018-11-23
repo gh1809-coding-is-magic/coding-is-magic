@@ -36,6 +36,8 @@ public class SheepWalk : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
+
+        // to make sure the functionality is working: space to turn; q to move forward
         if (Input.GetKeyDown(KeyCode.Space)) {
             TurnNinety();
         }
@@ -66,13 +68,10 @@ public class SheepWalk : MonoBehaviour
     {
         if (other.gameObject.name == "Plane")
         {
-            print("print");
-            Debug.Log("entered");
             SceneManager.LoadScene("Level_1");
         }
         if (other.gameObject.name == "Win")
         {
-            Debug.Log("WON");
             anim.SetBool("isWin", true);
             ps.Play();
         }
