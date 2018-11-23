@@ -1,6 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding-bottom: 3em;
+  background: url('https://i.imgur.com/WqOtkCs.png');
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
 a {
@@ -13,42 +15,48 @@ label {
 
 nav a {
   display: inline-block;
-  /* margin: 1em; */
-}
-
-form div {
-  margin: 1em;
-  /* display: inline-block; */
 }
 
 #browser-container {
   display: flex;
   padding-right: 1em;
-  padding-left: 1em;
-  margin: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  bottom: 0;
+  background-color: #dbdbdb
 }
 
-#inner-blockly {
-  width: 50vw !important;
-  height: 80vh !important;
+#blockly-content {
+  width: 50vw;
+  height: 90vh;
+  bottom: 0;
+  background-color: #dbdbdb
 }
 
 #inner-unity {
-  width: 50vw;
-  height: 80vh;
+  width: 60vw;
+  height: 90vh;
+  bottom: 0;
 }
 
 li {
-  color: white;
+  color: rgba(255, 255, 255, .4);
+  /* float: right; */
+  text-align: right;
+  right: 1em;
+  /* position: relative; */
 }
 
 .firebaseui-idp-icon {
-  height: 25px;
+  height: 15px;
   width: auto;
 }
 
-.button.start-button {
-  float: right;
-  /* position: relative; */
-  right:0
+.firebaseui-idp-text-short {
+  display: none;
+}
+
+.firebaseui-idp-text-long {
+  margin-left: 4px;
+
 }

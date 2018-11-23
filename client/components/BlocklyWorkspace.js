@@ -6,7 +6,7 @@ import BlocklyDrawer, {
   workspaceXML
 } from 'react-blockly-drawer'
 import {move1, forLoop} from './spellConstructor'
-import { endianness } from 'os';
+import {endianness} from 'os'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -51,9 +51,9 @@ class BlocklyWorkspace extends React.Component {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
           }}
-
-          style={{minHeight: "80vh"}}
+          style={{minHeight: '75vh'}}
           injectOptions={{
+            horizontalLayout: 'false',
             zoom: {
               controls: true,
               wheel: true,
@@ -61,16 +61,16 @@ class BlocklyWorkspace extends React.Component {
               maxScale: 3,
               minScale: 0.3,
               scaleSpeed: 1.2
-              },
-              grid: {
-                spacing: 20,
-                length: 3,
-                colour: '#ccc',
-                snap: true
-              },
-              scrollbars: false,
-              toolboxPosition: "end",
-            }}
+            },
+            grid: {
+              spacing: 20,
+              length: 3,
+              colour: '#ccc',
+              snap: true
+            },
+            scrollbars: false,
+            toolboxPosition: 'start'
+          }}
         >
           <Category name="Variables" custom="VARIABLE" />
           <Category name="Values">
@@ -81,9 +81,53 @@ class BlocklyWorkspace extends React.Component {
             <Block type="controls_for" />
           </Category>
         </BlocklyDrawer>
-            <button type="button" onClick={() => this.runCode()}>
-                Run
-              </button>
+        <div className="blockly-button-box">
+        <button
+          type="button"
+          style={{
+            float: 'right',
+            right: 'calc(50% - 2em)',
+            borderRadius: '8px',
+            backgroundColor: '#4CAF50',
+            fontSize: '11pt',
+            color: 'white',
+            weight: 'bold',
+            paddingLeft: '1em',
+            paddingRight: '1em',
+            paddingTop: '5px',
+            paddingBottom: '5px',
+            marginTop: '2em',
+            marginLeft: '2em',
+            border: '2px solid #357a38',
+            outline: 'none',
+            position: 'relative'
+          }}
+          onClick={() => this.runCode()}
+        >
+          Run Code!
+        </button>
+
+        <button
+          type="button"
+          style={{
+            fontSize: '10pt',
+            borderRadius: '8px',
+            backgroundColor: '#008CBA',
+            color: 'white',
+            weight: 'bold',
+            paddingTop: '5px',
+            paddingBottom: '5px',
+            marginTop: '2.3em',
+            marginRight: ".8em",
+            float: "right",
+            right: "2em",
+            position: "absolute",
+            outline: 'none',
+            border: "2px solid #017196"
+          }}
+        >
+          Next
+        </button></div>
       </div>
     )
   }

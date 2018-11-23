@@ -23,8 +23,6 @@ class UnityGame extends React.Component {
     return (
       <div>
 
-      <button className="start-button" type="button">Start</button>
-
       <div id="browser-container">
         <div
           id="inner-unity"
