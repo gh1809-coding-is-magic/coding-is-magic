@@ -6,6 +6,7 @@ import BlocklyDrawer, {
   workspaceXML
 } from 'react-blockly-drawer'
 import {move1, forLoop} from './spellConstructor'
+import { endianness } from 'os';
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -44,28 +45,45 @@ class BlocklyWorkspace extends React.Component {
     return (
       <div id="blockly-content">
         <BlocklyDrawer
+          className="blockly-drawer"
           tools={[this.helloWorld, this.forLoops]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
           }}
-          appearance={{
-            categories: {
-              Demo: {
-                colour: '270'
-              }
-            }
-          }}
+
+          style={{minHeight: "80vh"}}
+          injectOptions={{
+            zoom: {
+              controls: true,
+              wheel: true,
+              startScale: 1.0,
+              maxScale: 3,
+              minScale: 0.3,
+              scaleSpeed: 1.2
+              },
+              grid: {
+                spacing: 20,
+                length: 3,
+                colour: '#ccc',
+                snap: true
+              },
+              scrollbars: false,
+              toolboxPosition: "end",
+            }}
         >
           <Category name="Variables" custom="VARIABLE" />
           <Category name="Values">
             <Block type="math_number" />
             <Block type="text" />
+            <Block type="controls_if" />
+            <Block type="controls_whileUntil" />
+            <Block type="controls_for" />
           </Category>
         </BlocklyDrawer>
-        <button type="button" onClick={() => this.runCode()}>
-          Run
-        </button>
+            <button type="button" onClick={() => this.runCode()}>
+                Run
+              </button>
       </div>
     )
   }

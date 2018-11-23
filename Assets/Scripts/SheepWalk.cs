@@ -54,13 +54,15 @@ public class SheepWalk : MonoBehaviour
     }
     IEnumerator SheepMoveForward()
     {
-        float elapsedTime = 0f;
-        while (elapsedTime < duration)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * 6f);
-            elapsedTime += Time.deltaTime;
-            anim.SetBool("isWalking", true);
-            yield return null;
+        if (move) {
+            float elapsedTime = 0f;
+            while (elapsedTime < duration)
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * 6f);
+                elapsedTime += Time.deltaTime;
+                anim.SetBool("isWalking", true);
+                yield return null;
+            }
         }
     }
     void TurnNinety() {
