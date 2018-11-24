@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Knewave|Lemon');
+/* font-family: 'Gamja Flower', cursive;
+font-family: 'Lemon', cursive;
+font-family: 'Knewave', cursive; */
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   /* background: url('./green-background.png'); */
@@ -65,12 +70,8 @@ li {
   background: url('./green-background.png');
   height: 97vh;
   border-radius: 25px;
-}
-
-.tree-image {
-  background: url('./trees.png');
-  background-size: cover;
-  height: 97vh;
+  text-align: center;
+  vertical-align: middle
 }
 
 .blockly-button-box {
@@ -79,5 +80,33 @@ li {
 }
 
 #firebaseui {
-  padding: 1em;
+  padding-top: 1px;
+  padding-right: 1em;
+}
+
+.main-heading {
+  height: 40vh;
+  width: 60vw;
+  border-radius: 25px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Lemon', cursive;
+  color: #f2b75e;
+  text-align: center;
+  padding-top: 4em;
+  font-size: 18pt;
+}
+
+.background-transform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 98.8vw;
+  height: 97vh;
+  border-radius: 25px;
+  will-change: transform;
+  background: url('./trees.png');
+  background-size: cover
 }
