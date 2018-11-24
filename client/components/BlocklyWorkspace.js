@@ -5,8 +5,7 @@ import BlocklyDrawer, {
   Category,
   workspaceXML
 } from 'react-blockly-drawer'
-import {move1, forLoop} from './spellConstructor'
-import {endianness} from 'os'
+import {move1, forLoop, turn} from './spellConstructor'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -22,6 +21,7 @@ class BlocklyWorkspace extends React.Component {
     //*Should probably refactor this and place definition outside of constructor
     this.helloWorld = move1()
     this.forLoops = forLoop()
+    this.turn = turn()
 
     this.runCode = this.runCode.bind(this)
   }
@@ -46,12 +46,12 @@ class BlocklyWorkspace extends React.Component {
       <div id="blockly-content">
         <BlocklyDrawer
           className="blockly-drawer"
-          tools={[this.helloWorld, this.forLoops]}
+          tools={[this.helloWorld, this.forLoops, this.turn]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
           }}
-          style={{minHeight: '75vh'}}
+          style={{minHeight: '75vh', width: '50vw'}}
           injectOptions={{
             horizontalLayout: 'false',
             zoom: {
@@ -82,52 +82,53 @@ class BlocklyWorkspace extends React.Component {
           </Category>
         </BlocklyDrawer>
         <div className="blockly-button-box">
-        <button
-          type="button"
-          style={{
-            float: 'right',
-            right: 'calc(50% - 2em)',
-            borderRadius: '8px',
-            backgroundColor: '#4CAF50',
-            fontSize: '11pt',
-            color: 'white',
-            weight: 'bold',
-            paddingLeft: '1em',
-            paddingRight: '1em',
-            paddingTop: '5px',
-            paddingBottom: '5px',
-            marginTop: '2em',
-            marginLeft: '2em',
-            border: '2px solid #357a38',
-            outline: 'none',
-            position: 'relative'
-          }}
-          onClick={() => this.runCode()}
-        >
-          Run Code!
-        </button>
+          <button
+            type="button"
+            style={{
+              float: 'right',
+              right: 'calc(50% - 2em)',
+              borderRadius: '8px',
+              backgroundColor: '#4CAF50',
+              fontSize: '11pt',
+              color: 'white',
+              weight: 'bold',
+              paddingLeft: '1em',
+              paddingRight: '1em',
+              paddingTop: '5px',
+              paddingBottom: '5px',
+              marginTop: '2em',
+              marginLeft: '2em',
+              border: '2px solid #357a38',
+              outline: 'none',
+              position: 'relative'
+            }}
+            onClick={() => this.runCode()}
+          >
+            Run Code!
+          </button>
 
-        <button
-          type="button"
-          style={{
-            fontSize: '10pt',
-            borderRadius: '8px',
-            backgroundColor: '#008CBA',
-            color: 'white',
-            weight: 'bold',
-            paddingTop: '5px',
-            paddingBottom: '5px',
-            marginTop: '2.3em',
-            marginRight: ".8em",
-            float: "right",
-            right: "2em",
-            position: "absolute",
-            outline: 'none',
-            border: "2px solid #017196"
-          }}
-        >
-          Next
-        </button></div>
+          <button
+            type="button"
+            style={{
+              fontSize: '10pt',
+              borderRadius: '8px',
+              backgroundColor: '#008CBA',
+              color: 'white',
+              weight: 'bold',
+              paddingTop: '5px',
+              paddingBottom: '5px',
+              marginTop: '2.3em',
+              marginRight: '.8em',
+              float: 'right',
+              right: '-125px',
+              position: 'relative',
+              outline: 'none',
+              border: '2px solid #017196'
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
     )
   }

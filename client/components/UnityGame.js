@@ -21,7 +21,6 @@ class UnityGame extends React.Component {
 
   render() {
     return (
-      <div>
 
       <div id="browser-container">
         <div
@@ -34,7 +33,6 @@ class UnityGame extends React.Component {
         <div id="inner-blockly">
           <BlocklyWorkspace unitySendMessage={this.unitySendMessage} />
         </div>
-      </div>
       </div>
     )
   }

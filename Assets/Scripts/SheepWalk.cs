@@ -50,7 +50,9 @@ public class SheepWalk : MonoBehaviour
     }
 
     void BlockyMove() {
-        StartCoroutine(SheepMoveForward());
+        if (move) {
+            StartCoroutine(SheepMoveForward());
+        }
     }
     IEnumerator SheepMoveForward()
     {
@@ -66,8 +68,10 @@ public class SheepWalk : MonoBehaviour
         }
     }
     void TurnNinety() {
-        transform.Rotate(0, 90, 0);
-        anim.SetBool("isWalking", true);
+        if (move) {
+            transform.Rotate(0, 90, 0);
+            anim.SetBool("isWalking", true);
+        }
     }
        void OnTriggerEnter(Collider other)
     {
