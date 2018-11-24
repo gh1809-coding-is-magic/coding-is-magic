@@ -22,12 +22,9 @@ nav a {
 #browser-container {
   display: flex;
   padding-right: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
   bottom: 0;
   background: url('./pink.jpg');
   border-radius: 25px;
-
 }
 
 #blockly-content {
@@ -35,7 +32,6 @@ nav a {
   height: 90vh;
   bottom: 0;
   padding-top: 1.5em;
-  /* background-color: #dbdbdb */
 }
 
 #inner-unity {

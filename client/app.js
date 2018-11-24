@@ -14,10 +14,10 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           {/* <div id="firebaseui" /> */}
-          <Route exact path='/' component={Main} />
-          <Route exact path='/game' component={UnityGame} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/game" component={UnityGame} />
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     )
   }
 }
