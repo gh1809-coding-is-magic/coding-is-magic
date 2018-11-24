@@ -5,7 +5,7 @@ import BlocklyDrawer, {
   Category,
   workspaceXML
 } from 'react-blockly-drawer'
-import {move1, forLoop} from './spellConstructor'
+import {move1, forLoop, turn} from './spellConstructor'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -21,6 +21,7 @@ class BlocklyWorkspace extends React.Component {
     //*Should probably refactor this and place definition outside of constructor
     this.helloWorld = move1()
     this.forLoops = forLoop()
+    this.turn = turn()
 
     this.runCode = this.runCode.bind(this)
   }
@@ -44,28 +45,90 @@ class BlocklyWorkspace extends React.Component {
     return (
       <div id="blockly-content">
         <BlocklyDrawer
-          tools={[this.helloWorld, this.forLoops]}
+          className="blockly-drawer"
+          tools={[this.helloWorld, this.forLoops, this.turn]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
           }}
-          appearance={{
-            categories: {
-              Demo: {
-                colour: '270'
-              }
-            }
+          style={{minHeight: '75vh', width: '50vw'}}
+          injectOptions={{
+            horizontalLayout: 'false',
+            zoom: {
+              controls: true,
+              wheel: true,
+              startScale: 1.0,
+              maxScale: 3,
+              minScale: 0.3,
+              scaleSpeed: 1.2
+            },
+            grid: {
+              spacing: 20,
+              length: 3,
+              colour: '#ccc',
+              snap: true
+            },
+            scrollbars: false,
+            toolboxPosition: 'start'
           }}
         >
           <Category name="Variables" custom="VARIABLE" />
           <Category name="Values">
             <Block type="math_number" />
             <Block type="text" />
+            <Block type="controls_if" />
+            <Block type="controls_whileUntil" />
+            <Block type="controls_for" />
           </Category>
         </BlocklyDrawer>
-        <button type="button" onClick={() => this.runCode()}>
-          Run
-        </button>
+        <div className="blockly-button-box">
+          <button
+            type="button"
+            style={{
+              float: 'right',
+              right: 'calc(50% - 2em)',
+              borderRadius: '8px',
+              backgroundColor: '#4CAF50',
+              fontSize: '11pt',
+              color: 'white',
+              weight: 'bold',
+              paddingLeft: '1em',
+              paddingRight: '1em',
+              paddingTop: '5px',
+              paddingBottom: '5px',
+              marginTop: '2em',
+              marginLeft: '2em',
+              border: '2px solid #357a38',
+              outline: 'none',
+              position: 'relative'
+            }}
+            onClick={() => this.runCode()}
+          >
+            Run Code!
+          </button>
+
+          <button
+            type="button"
+            style={{
+              fontSize: '10pt',
+              borderRadius: '8px',
+              backgroundColor: '#008CBA',
+              color: 'white',
+              weight: 'bold',
+              paddingTop: '5px',
+              paddingBottom: '5px',
+              marginTop: '2.3em',
+              marginRight: '.8em',
+              float: 'right',
+              right: '-125px',
+              position: 'relative',
+              outline: 'none',
+              border: '2px solid #017196'
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
     )
   }

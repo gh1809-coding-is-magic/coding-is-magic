@@ -31,6 +31,21 @@ export const move1 = spellConstructor({
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove")`
 })
 
+export const turn = spellConstructor({
+  name: 'Turn',
+  type:'block_type',
+  category: 'Movement',
+  block: {
+    message0: 'Turn 90 Degrees',
+   // output: 'String',
+    colour: 160,
+    tooltip: 'Turns the object 90 degrees',
+    previousStatement: null,
+    nextStatement: null
+  },
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety")`
+})
+
 export const forLoop = spellConstructor({
   name: 'For',
   category: 'Loops',

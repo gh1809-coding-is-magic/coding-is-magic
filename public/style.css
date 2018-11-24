@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Knewave|Lemon');
+/* font-family: 'Gamja Flower', cursive;
+font-family: 'Lemon', cursive;
+font-family: 'Knewave', cursive; */
+
 body {
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background: url('./green-background.png'); */
+  /* background: url('./pink.jpg'); */
+  /* background: url('./trees.png'); */
+  background-size: cover;
+  background-color: #dbedff;
 }
 
 a {
@@ -12,17 +22,91 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+#browser-container {
+  display: flex;
+  padding-right: 1em;
+  bottom: 0;
+  background: url('./pink.jpg');
+  border-radius: 25px;
 }
 
-/* .inner-unity {
-  top: 0;
-  left: 0;
-  width: '500px';
-  height: '300px';
-} */
+#blockly-content {
+  width: 50vw;
+  height: 90vh;
+  bottom: 0;
+  padding-top: 1.5em;
+}
+
+#inner-unity {
+  width: 60vw;
+  height: 90vh;
+  padding-top: 1.5em;
+  bottom: 0;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+li {
+  color: rgba(255, 255, 255, 0);
+  text-align: right;
+}
+
+.firebaseui-idp-icon {
+  height: 15px;
+  width: auto;
+}
+
+.firebaseui-idp-text-short {
+  display: none;
+}
+
+.firebaseui-idp-text-long {
+  margin-left: 4px;
+}
+
+.main {
+  background: url('./green-background.png');
+  height: 97vh;
+  border-radius: 25px;
+  text-align: center;
+  vertical-align: middle
+}
+
+.blockly-button-box {
+  height: 15vh;
+  background-color: #dbdbdb
+}
+
+#firebaseui {
+  padding-top: 1px;
+  padding-right: 1em;
+}
+
+.main-heading {
+  height: 40vh;
+  width: 60vw;
+  border-radius: 25px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Lemon', cursive;
+  color: #f2b75e;
+  text-align: center;
+  padding-top: 4em;
+  font-size: 18pt;
+}
+
+.background-transform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 98.8vw;
+  height: 97vh;
+  border-radius: 25px;
+  will-change: transform;
+  background: url('./trees.png');
+  background-size: cover
+}
