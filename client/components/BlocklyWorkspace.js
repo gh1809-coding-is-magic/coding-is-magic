@@ -7,6 +7,8 @@ import BlocklyDrawer, {
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
 
+const restart = `this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne")`
+
 class BlocklyWorkspace extends React.Component {
   constructor() {
     super()
@@ -24,6 +26,7 @@ class BlocklyWorkspace extends React.Component {
     this.turn = turn()
 
     this.runCode = this.runCode.bind(this)
+    this.restartLevel = this.restartLevel.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -31,6 +34,10 @@ class BlocklyWorkspace extends React.Component {
     console.log('State of current code: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
     eval(this.state.currCode)
+  }
+
+  restartLevel() {
+    eval(restart)
   }
 
   //False to prevent placed blocks from disappearing with each new state change
@@ -84,47 +91,21 @@ class BlocklyWorkspace extends React.Component {
         <div className="blockly-button-box">
           <button
             type="button"
+            className='run-button'
             style={{
-              float: 'right',
-              right: 'calc(50% - 2em)',
-              borderRadius: '8px',
-              backgroundColor: '#4CAF50',
-              fontSize: '11pt',
-              color: 'white',
-              weight: 'bold',
-              paddingLeft: '1em',
-              paddingRight: '1em',
-              paddingTop: '5px',
-              paddingBottom: '5px',
-              marginTop: '2em',
-              marginLeft: '2em',
-              border: '2px solid #357a38',
-              outline: 'none',
-              position: 'relative'
+
             }}
             onClick={() => this.runCode()}
           >
             Run Code!
           </button>
+          <button type="button" onClick={() => this.restartLevel()}>
+            Restart
+          </button>
 
           <button
             type="button"
-            style={{
-              fontSize: '10pt',
-              borderRadius: '8px',
-              backgroundColor: '#008CBA',
-              color: 'white',
-              weight: 'bold',
-              paddingTop: '5px',
-              paddingBottom: '5px',
-              marginTop: '2.3em',
-              marginRight: '.8em',
-              float: 'right',
-              right: '-125px',
-              position: 'relative',
-              outline: 'none',
-              border: '2px solid #017196'
-            }}
+            className='next-button'
           >
             Next
           </button>

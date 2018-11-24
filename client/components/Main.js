@@ -19,9 +19,9 @@ class Main extends React.Component {
     return (
       <div className="main">
         <div id="firebaseui" />
-        <h2>
-        <Link to="/game">Enter</Link>
-        </h2>
+        <p>
+        <Link to="/game">Enter without sign-in</Link>
+        </p>
         <Spring native to={{ progress: this.state.value }}>
           {({ progress }) => (
             <div className="mains" onClick={this.handleClick}>
