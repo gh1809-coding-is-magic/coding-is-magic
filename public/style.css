@@ -119,8 +119,8 @@ h2 {
   color: white;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-top: 2.3em;
-  margin-right: .8em;
+  margin-top: 2em;
+  margin-right: .4em;
   float: right;
   right: -125px;
   position: relative;
@@ -134,18 +134,45 @@ h2 {
 
 .run-button {
   float: right;
-  right: calc(50% - 2em);
+  right: calc(50% - 3.5em);
   border-radius: 8px;
   background-color: #4CAF50;
   font-size: 11pt;
   color: white;
   padding-left: 1em;
   padding-right: 1em;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   margin-top: 2em;
   margin-left: 2em;
   border: 2px solid #357a38;
   outline: none;
   position: relative
+}
+
+.run-button:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+}
+
+.restart-button {
+  color:white;
+  font-size: 10pt;
+  border-radius: 7px;
+  background-color: rgb(247, 144, 161);
+  color: white;
+  outline: none;
+  border: 2px solid rgb(207, 57, 82);
+  left: 1em;
+  margin-top: 2em;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.restart-button:hover {
+  color: rgb(247, 144, 161);
+  border: 2px solid rgb(207, 57, 82);
+  background-color: white;
 }

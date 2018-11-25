@@ -97,7 +97,7 @@ class BlocklyWorkspace extends React.Component {
           >
             Run Code!
           </button>
-          <button type="button" onClick={() => this.restartLevel()}>
+          <button className="restart-button" type="button" onClick={() => this.restartLevel()}>
             Restart
           </button>
 
