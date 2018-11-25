@@ -1,3 +1,5 @@
+import Blockly from 'node-blockly/browser'
+
 const spellConstructor = obj => {
   return () => ({
     name: obj.name,
@@ -18,11 +20,11 @@ export default spellConstructor
 
 export const move1 = spellConstructor({
   name: 'Move',
-  type:'block_type',
+  type: 'block_type',
   category: 'Movement',
   block: {
     message0: 'Move 1 step',
-   // output: 'String',
+    // output: 'String',
     colour: 160,
     tooltip: 'Moves the object 1 step',
     previousStatement: null,
@@ -35,12 +37,12 @@ export const forLoop = spellConstructor({
   name: 'For',
   category: 'Loops',
   block: {
-    message0: 'Do %2, %1 times.',
+    message0: 'Do %2 %1 times.',
     args0: [
       {
         type: 'field_dropdown',
         name: 'REPEATS',
-        options: [["0", '0'], ["1", '1'], ["2", '2'], ["3", '3'], ["4", '4'], ["5", '5']]
+        options: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']]
       },
       {
         type: 'input_statement',
@@ -51,7 +53,12 @@ export const forLoop = spellConstructor({
     colour: 270,
     tooltip: 'Repeat an action to object as many times as you set'
   },
-  generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove")`
+  generator: function() {
+    return `
+    for (let i = 0; i < ${this.getFieldValue('REPEATS')}; i++) {
+      ${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}
+    }`
+  }
 })
 
 // const move1Block = spellConstructor(move1)()
