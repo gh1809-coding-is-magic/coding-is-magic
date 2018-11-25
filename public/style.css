@@ -92,11 +92,11 @@ li {
 }
 
 h2 {
-  font-family: 'Lemon', cursive;
+  /* font-family: 'Lemon', cursive; */
   color: #f2b75e;
   text-align: center;
   padding-top: 4em;
-  font-size: 18pt;
+  font-size: 12pt;
 }
 
 .background-transform {
@@ -109,4 +109,70 @@ h2 {
   will-change: transform;
   background: url('./trees.png');
   background-size: cover
+}
+
+.next-button {
+  color:white;
+  font-size: 10pt;
+  border-radius: 8px;
+  background-color: #008CBA;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 2em;
+  margin-right: .4em;
+  float: right;
+  right: -125px;
+  position: relative;
+  outline: none;
+  border: 2px solid #017196;
+}
+
+.next-button:hover {
+  color: pink;
+}
+
+.run-button {
+  float: right;
+  right: calc(50% - 3.5em);
+  border-radius: 8px;
+  background-color: #4CAF50;
+  font-size: 11pt;
+  color: white;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 2em;
+  margin-left: 2em;
+  border: 2px solid #357a38;
+  outline: none;
+  position: relative
+}
+
+.run-button:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+}
+
+.restart-button {
+  color:white;
+  font-size: 10pt;
+  border-radius: 7px;
+  background-color: rgb(247, 144, 161);
+  color: white;
+  outline: none;
+  border: 2px solid rgb(207, 57, 82);
+  left: 1em;
+  margin-top: 2em;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.restart-button:hover {
+  color: rgb(247, 144, 161);
+  border: 2px solid rgb(207, 57, 82);
+  background-color: white;
 }

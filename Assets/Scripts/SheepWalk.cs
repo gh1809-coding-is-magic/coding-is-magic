@@ -49,6 +49,10 @@ public class SheepWalk : MonoBehaviour
         }
     }
 
+    void RestartLevelOne() {
+        SceneManager.LoadScene("Level_1");
+    }
+
     void BlockyMove() {
         if (move) {
             StartCoroutine(SheepMoveForward());
