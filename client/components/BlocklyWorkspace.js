@@ -7,8 +7,6 @@ import BlocklyDrawer, {
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
 
-const restart = `this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne")`
-
 class BlocklyWorkspace extends React.Component {
   constructor() {
     super()
@@ -37,7 +35,7 @@ class BlocklyWorkspace extends React.Component {
   }
 
   restartLevel() {
-    eval(restart)
+    eval(this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne"))
   }
 
   //False to prevent placed blocks from disappearing with each new state change
