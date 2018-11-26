@@ -49,6 +49,8 @@ class BlocklyWorkspace extends React.Component {
     console.log('Hello world: ', this.helloWorld)
     return (
       <div id="blockly-content">
+        <script src="blockly_compressed.js" />
+        <script src="javascript_compressed.js" />
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.helloWorld, this.forLoops, this.turn]}
