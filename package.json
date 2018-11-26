@@ -16,6 +16,7 @@
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "seed": "node script/seed.js",
     "start": "firebase serve",
+    "which": "which firebase",
     "start-dev": "npm run unity-prep && npm run build-client-watch & firebase serve",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register",
     "unity-prep": "cp -r Build public/Build && rsync public/Build/Build/* public/Build"
@@ -40,6 +41,7 @@
     "firebase": "^5.5.8",
     "firebase-admin": "^6.1.0",
     "firebase-cli": "^1.2.0",
+    "firebase-tools": "^6.1.1",
     "firebaseui": "^3.4.1",
     "google-blockly": "^1.0.0",
     "history": "^4.6.3",
