@@ -16,9 +16,10 @@
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "seed": "node script/seed.js",
     "start": "firebase serve",
+    "which": "which firebase",
     "start-dev": "npm run unity-prep && npm run build-client-watch & firebase serve",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register",
-    "unity-prep": "cp -r Build public/Build && rsync public/Build/Build/* public/Build"
+    "unity-prep": "rm -rf public/Build && cp -r Build public/Build && rsync public/Build/Build/* public/Build"
   },
   "lint-staged": {
     "*.{js,jsx}": [
