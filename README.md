@@ -1,6 +1,6 @@
 # Coding is Magic
 
-A block language coding game using Unity, Google Blockly, Firebase, and React.js, made as the capstone for the 1809 Cohort of the Grace Hopper Program at Fullstack Academy. The alpha can be found online at [Coding is Magic](https://coding-is-magic.firebaseapp.com/) on Firebase.
+A block language coding game using Unity, Google Blockly, Firebase, and React.js, made as a capstone for the 1809 Cohort of the Grace Hopper Program at Fullstack Academy. The alpha can be found online at [Coding is Magic](https://coding-is-magic.firebaseapp.com/) on Firebase.
 
 ## Installation
 
