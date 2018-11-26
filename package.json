@@ -37,8 +37,6 @@
     "axios": "^0.15.3",
     "blockly": "^1.0.0",
     "compression": "^1.7.3",
-    "express": "^4.16.3",
-    "express-session": "^1.15.1",
     "firebase": "^5.5.8",
     "firebase-admin": "^6.1.0",
     "firebase-cli": "^1.2.0",
@@ -56,7 +54,6 @@
     "react-router-dom": "^4.3.1",
     "react-spring": "^6.1.9",
     "react-unity-webgl": "^7.0.7",
-    "sequelize": "^4.38.0",
     "xmlshim": "git://github.com/eyz/node-xmlshim.git#be6220b53809b2c5a84be25c17e56bc4a12ba411"
   },
   "devDependencies": {
