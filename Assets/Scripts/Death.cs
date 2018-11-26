@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Death : MonoBehaviour {
-
+	public GameObject DeathMenu;
 	// Use this for initialization
 	void Start () {
-		// gameObject.SetActive(true);
+		DeathMenu.SetActive(true);
 	}
 
 	// Update is called once per frame
@@ -15,6 +15,6 @@ public class Death : MonoBehaviour {
 	}
 
 	public void ToggleShowHide() {
-		// gameObject.SetActive(false);
+		DeathMenu.SetActive(false);
 	}
 }

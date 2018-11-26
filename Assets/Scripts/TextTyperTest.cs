@@ -1,4 +1,4 @@
-﻿namespace RedBlueGames.Tools.TextTyper
+﻿﻿namespace RedBlueGames.Tools.TextTyper
 {
   using UnityEngine;
   using System.Collections;
