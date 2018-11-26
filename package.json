@@ -40,6 +40,7 @@
     "firebase": "^5.5.8",
     "firebase-admin": "^6.1.0",
     "firebase-cli": "^1.2.0",
+    "firebase-tools": "^6.1.1",
     "firebaseui": "^3.4.1",
     "google-blockly": "^1.0.0",
     "history": "^4.6.3",
