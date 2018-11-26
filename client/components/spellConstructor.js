@@ -61,23 +61,32 @@ export const forLoop = spellConstructor({
   }
 })
 
-// const move1Block = spellConstructor(move1)()
+export const ifStatement = spellConstructor({
+  name: 'If',
+  category: 'Logic',
+  block: {
+    message0: '',
+    args0: [
+      {
+        type: 'input_statement',
+        name: 'CONDITION'
+      },
+      {
+        type: 'input_statement',
+        name: 'ACTIONS'
+      }
+    ],
+    output: 'String',
+    colour: 270,
+    tooltip: 'Do something based on a condition.'
+  },
+  generator: function() {
+    return `
+    if (${Blockly.JavaScript.statementToCode(this, 'CONDITION')} === true) {
+      ${Blockly.JavaScript.statementToCode(this, 'ACTIONS')}
+    }
+    `
+  }
+})
 
-// const moveAny = spellConstructor({
-//   name: 'MoveAny',
-//   category: 'Movement',
-//   block: {
-//     message0: 'Move %1 number of steps',
-//     args0: [{type: 'field_input', name: 'STEPS', check: 'Number'}],
-//     output: 'String',
-//     colour: 160,
-//     tooltip: 'Move the object an input number of steps'
-//   },
-//   generator: function(block) {
-//     return `this.props.unitySendMessage('Sheep_Demo', 'BlockyMove(${block.getFieldValue(
-//       'STEPS'
-//     )})')`
-//   }
-// })
-
-// const moveAnyBlock = spellConstructor(moveAny)()
+// else?
