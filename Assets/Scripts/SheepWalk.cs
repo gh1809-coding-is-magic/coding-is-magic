@@ -13,16 +13,10 @@ public class SheepWalk : MonoBehaviour
     public Quaternion TargetRotation;
     public ParticleSystem ps;
     public bool move = true;
-    // public GameObject deathing;
+    public GameObject DeathMenu;
     void Start()
     {
         anim = GetComponent<Animator>();
-        // Death deathMessage = gameObject.GetComponent<Death>();
-        // deathing = GameObject.Find("DeathMenu");
-        // deathing = GetComponent<DeathMenu>();
-        // gameObject.GetComponent<Death>().enabled = false;
-        // gameObject.GetComponent<Death>().enabled = false;
-        // deathing.SetActive(false);
     }
 
     void Update()
@@ -88,7 +82,7 @@ public class SheepWalk : MonoBehaviour
     {
         if (other.gameObject.name == "Plane")
         {
-            // deathing.SetActive(true);
+            DeathMenu.SetActive(true);
             SceneManager.LoadScene("Level_1");
         }
         if (other.gameObject.name == "Win")
