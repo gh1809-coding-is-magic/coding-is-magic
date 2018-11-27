@@ -82,6 +82,7 @@ class BlocklyWorkspace extends React.Component {
               snap: true
             },
             maxBlocks: 5,
+            disable: true,
             scrollbars: false,
             toolboxPosition: 'start'
           }}
@@ -106,17 +107,17 @@ class BlocklyWorkspace extends React.Component {
           >
             Run Code!
           </button>
-          
-          <button 
-          className="restart-button" 
-          type="button" 
+
+          <button
+          className="restart-button"
+          type="button"
           onClick={() => this.restartLevel()}>
           Restart
           </button>
 
-          <button 
-          className="clear-board" 
-          type="button" 
+          <button
+          className="clear-board"
+          type="button"
           onClick={() => this.clearBoard()}>
           Clear Board
           </button>
