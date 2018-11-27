@@ -6,7 +6,6 @@ import BlocklyDrawer, {
   workspaceXML
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
-import {runInThisContext} from 'vm'
 import LevelOne from './LevelOne'
 import LevelTwo from './LevelTwo'
 
