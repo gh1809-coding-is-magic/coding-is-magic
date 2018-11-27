@@ -1,23 +1,66 @@
-import React from 'react';
+import React from 'react'
 import BlocklyDrawer, {
-    Block,
-    Category,
-    workspaceXML
-  } from 'react-blockly-drawer';
+  Block,
+  Category,
+  workspaceXML
+} from 'react-blockly-drawer'
+import {move1, forLoop, turn} from './spellConstructor'
 
 class LevelOne extends React.Component {
+  constructor() {
+    super()
+
+    //State keeps track of outputted Unity messages and blocks in the workspace
+    this.state = {
+      currCode: '',
+      currWorkspace: '',
+      counter: 0
+    }
+
+    //Move block 1 step definition
+    //*Should probably refactor this and place definition outside of constructor
+    this.move = move1()
+    this.forLoops = forLoop()
+    this.turn = turn()
+
+    this.runCode = this.runCode.bind(this)
+    this.restartLevel = this.restartLevel.bind(this)
+    // this.clearBoard = this.clearBoard.bind(this)
+  }
+
+  //Evaluates code on submit and sends message to Unity
+  runCode() {
+    console.log('State of current code: ', this.state.currCode)
+    console.log('Type: ', typeof this.state.currCode)
+    //called in block function to delay each sendMessage
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
+    }
+    eval(
+      'const runBlocklyCode = async () => {' +
+        this.state.currCode +
+        '}; runBlocklyCode();'
+    )
+  }
+
+  restartLevel() {
+    eval(this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne'))
+  }
+
+    shouldComponentUpdate() {
+    return false
+  }
+
   render() {
     return (
       <div>
-        <script src="blockly_compressed.js" />
-        <script src="javascript_compressed.js" />
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.move, this.turn]}
-          onChange={(code, workspace) => {
-            console.log('CHANGING THE CODE: ', code)
-            this.setState({currCode: code, currWorkspace: workspace})
-          }}
+            onChange={(code, workspace) => {
+              console.log('CHANGING THE CODE: ', code)
+              this.setState({currCode: code, currWorkspace: workspace})
+            }}
           style={{minHeight: '75vh', width: '50vw'}}
           injectOptions={{
             horizontalLayout: 'false',
