@@ -88,6 +88,7 @@ public class SheepWalk : MonoBehaviour
             transform.position = new Vector3(5.2f, .79f, .62f);
             transform.eulerAngles = new Vector3(0, 228, 0);
             DeathMenu.SetActive(true);
+            move = false;
         }
         if (other.gameObject.name == "Win")
         {
@@ -95,6 +96,7 @@ public class SheepWalk : MonoBehaviour
             anim.SetBool("isWin", true);
             ps.Play();
             NextLevel.SetActive(true);
+            move = false;
         }
     }
 }
