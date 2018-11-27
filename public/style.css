@@ -1,14 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Knewave|Lemon');
-/* font-family: 'Gamja Flower', cursive;
-font-family: 'Lemon', cursive;
-font-family: 'Knewave', cursive; */
-
 body {
   font-family: Arial, Helvetica, sans-serif;
-  /* background: url('./green-background.png'); */
-  /* background: url('./pink.jpg'); */
-  /* background: url('./trees.png'); */
-  background-size: cover;
   background-color: #dbedff;
 }
 
@@ -32,20 +23,55 @@ nav a {
   border-radius: 25px;
 }
 
+#mobile-message {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  #browser-container {
+    display: none;
+  }
+  #blockly-content {
+    display: none;
+  }
+  #inner-unity {
+    display: none;
+  }
+  .blockly-drawer {
+    display: none;
+  }
+  #mobile-message {
+    display: block;
+    text-align: center;
+  }
+}
+
+#blockly-drawer {
+  min-height: '75vh';
+  width: '50vw'
+}
+
 #blockly-content {
   width: 50vw;
   height: 90vh;
   bottom: 0;
   padding-top: 1.5em;
+  min-height: '90vh';
 }
 
 #inner-unity {
-  width: 60vw;
+  min-height: '90vh';
+  display: flex;
+  width: 50vw;
   height: 90vh;
   padding-top: 1.5em;
   bottom: 0;
   margin-left: 1em;
   margin-bottom: 1em;
+}
+
+#inner-blockly {
+  display: flex;
 }
 
 li {
@@ -91,14 +117,6 @@ li {
   margin: 0 auto;
 }
 
-h2 {
-  /* font-family: 'Lemon', cursive; */
-  color: #f2b75e;
-  text-align: center;
-  padding-top: 4em;
-  font-size: 12pt;
-}
-
 .background-transform {
   position: absolute;
   top: 50%;
@@ -122,7 +140,7 @@ h2 {
   margin-top: 2em;
   margin-right: .4em;
   float: right;
-  right: -125px;
+  right: -225px;
   position: relative;
   outline: none;
   border: 2px solid #017196;
@@ -137,13 +155,13 @@ h2 {
   right: calc(50% - 3.5em);
   border-radius: 8px;
   background-color: #4CAF50;
-  font-size: 11pt;
+  font-size: 20pt;
   color: white;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 3px;
   padding-bottom: 3px;
-  margin-top: 2em;
+  margin-top: .75em;
   margin-left: 2em;
   border: 2px solid #357a38;
   outline: none;
@@ -174,5 +192,27 @@ h2 {
 .restart-button:hover {
   color: rgb(247, 144, 161);
   border: 2px solid rgb(207, 57, 82);
+  background-color: white;
+}
+
+
+.clear-board {
+  color:white;
+  font-size: 10pt;
+  border-radius: 7px;
+  background-color: rgb(179, 25, 255);
+  color: white;
+  outline: none;
+  border: 2px solid rgb(119, 0, 179);
+  left: 2em;
+  margin-top: 2em;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.clear-board:hover {
+  color: rgb(179, 25, 255);
+  border: 2px solid rgb(119, 0, 179);
   background-color: white;
 }
