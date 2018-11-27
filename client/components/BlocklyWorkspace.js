@@ -29,7 +29,7 @@ class BlocklyWorkspace extends React.Component {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
-    this.clearBoard = this.clearBoard.bind(this)
+    // this.clearBoard = this.clearBoard.bind(this)
     this.next = this.next.bind(this)
   }
 
@@ -41,7 +41,7 @@ class BlocklyWorkspace extends React.Component {
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     };
-    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; ();');
+    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; runBlocklyCode();');
   }
 
   next() {
@@ -59,13 +59,14 @@ class BlocklyWorkspace extends React.Component {
   //   })
   // }
 
-    clearBoard(){
-      this.state.currWorkspace.clear();
-  }
+  //   clearBoard(){
+  //     this.state.currWorkspace.clear();
+  // }
   //False to prevent placed blocks from disappearing with each new state change
-  shouldComponentUpdate() {
-    return false
-  }
+
+  // shouldComponentUpdate() {
+  //   return false
+  // }
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
@@ -74,47 +75,10 @@ class BlocklyWorkspace extends React.Component {
       <div id="blockly-content">
         <script src="blockly_compressed.js" />
         <script src="javascript_compressed.js" />
-        <BlocklyDrawer
-          className="blockly-drawer"
-          tools={allLevels[this.state.level]}
-          onChange={(code, workspace) => {
-            console.log('CHANGING THE CODE: ', code)
-            this.setState({currCode: code, currWorkspace: workspace})
-          }}
-          style={{minHeight: '75vh', width: '50vw'}}
-          injectOptions={{
-            horizontalLayout: 'false',
-            zoom: {
-              startScale: 2,
-            },
-            grid: {
-              spacing: 20,
-              length: 3,
-              colour: '#ccc',
-              snap: true
-            },
-            maxBlocks: 5,
-            disable: true,
-            scrollbars: false,
-            toolboxPosition: 'start'
-          }}
-        >
-          {/* <Category name="Variables" custom="VARIABLE"> */}
-          {/* <Category name="Values"> */}
-            {/* <Block type="math_number" /> */}
-            {/* <Block type="text" /> */}
-            {/* <Block type="controls_if" /> */}
-            {/* <Block type="controls_whileUntil" /> */}
-            {/* <Block type="controls_for" /> */}
-          {/* </Category> */}
-        </BlocklyDrawer>
         <div className="blockly-button-box">
           <button
             type="button"
             className='run-button'
-            style={{
-
-            }}
             onClick={() => this.runCode()}
           >
             Run Code!
@@ -137,7 +101,7 @@ class BlocklyWorkspace extends React.Component {
           <button
             type="button"
             className='next-button'
-            onClick={this.next()}
+            onClick={() => this.next()}
           >
             Next
           </button>
