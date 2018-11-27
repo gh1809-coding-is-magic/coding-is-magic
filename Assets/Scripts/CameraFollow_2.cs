@@ -29,7 +29,6 @@ public class CameraFollow_2 : MonoBehaviour {
             return;
         }
 
-        // compute position
         if (offsetPositionSpace == Space.Self)
         {
             transform.position = target.TransformPoint(offsetPosition);
@@ -38,8 +37,6 @@ public class CameraFollow_2 : MonoBehaviour {
         {
             transform.position = target.position + offsetPosition;
         }
-
-        // compute rotation
         if (lookAt)
         {
             transform.LookAt(target);
