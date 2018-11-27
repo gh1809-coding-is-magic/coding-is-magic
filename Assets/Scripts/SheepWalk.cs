@@ -17,6 +17,7 @@ public class SheepWalk : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        DeathMenu.SetActive(false);
     }
 
     void Update()
@@ -82,8 +83,9 @@ public class SheepWalk : MonoBehaviour
     {
         if (other.gameObject.name == "Plane")
         {
+            transform.position = new Vector3(5.2f, .79f, .62f);
+            transform.eulerAngles = new Vector3(0, 228, 0);
             DeathMenu.SetActive(true);
-            SceneManager.LoadScene("Level_1");
         }
         if (other.gameObject.name == "Win")
         {
