@@ -14,10 +14,12 @@ public class SheepWalk : MonoBehaviour
     public ParticleSystem ps;
     public bool move = true;
     public GameObject DeathMenu;
+    public GameObject NextLevel;
     void Start()
     {
         anim = GetComponent<Animator>();
         DeathMenu.SetActive(false);
+        NextLevel.SetActive(false);
     }
 
     void Update()
@@ -92,7 +94,14 @@ public class SheepWalk : MonoBehaviour
             anim.SetBool("isWalking", false);
             anim.SetBool("isWin", true);
             ps.Play();
-            move = false;
+            NextLevel.SetActive(true);
+                if (NextLevel) {
+                }
+                else {
+                    move = true;
+                    transform.position = new Vector3(5.2f, .79f, .62f);
+                    transform.eulerAngles = new Vector3(0, 228, 0);
+                }
         }
     }
 }
