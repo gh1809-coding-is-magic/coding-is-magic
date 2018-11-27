@@ -53,7 +53,7 @@ public class SheepWalk : MonoBehaviour
         }
     }
 
-    void RestartLevelOne() {
+    public void RestartLevelOne() {
         SceneManager.LoadScene("Level_1");
     }
 
@@ -95,13 +95,6 @@ public class SheepWalk : MonoBehaviour
             anim.SetBool("isWin", true);
             ps.Play();
             NextLevel.SetActive(true);
-                if (NextLevel) {
-                }
-                else {
-                    move = true;
-                    transform.position = new Vector3(5.2f, .79f, .62f);
-                    transform.eulerAngles = new Vector3(0, 228, 0);
-                }
         }
     }
 }
