@@ -25,7 +25,6 @@ class LevelOne extends React.Component {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
-    // this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -47,7 +46,7 @@ class LevelOne extends React.Component {
     eval(this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne'))
   }
 
-    shouldComponentUpdate() {
+  shouldComponentUpdate() {
     return false
   }
 
@@ -57,10 +56,10 @@ class LevelOne extends React.Component {
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.move, this.turn]}
-            onChange={(code, workspace) => {
-              console.log('CHANGING THE CODE: ', code)
-              this.setState({currCode: code, currWorkspace: workspace})
-            }}
+          onChange={(code, workspace) => {
+            console.log('CHANGING THE CODE: ', code)
+            this.setState({currCode: code, currWorkspace: workspace})
+          }}
           style={{minHeight: '75vh', width: '50vw'}}
           injectOptions={{
             horizontalLayout: 'false',
@@ -79,6 +78,32 @@ class LevelOne extends React.Component {
             toolboxPosition: 'start'
           }}
         />
+
+        <div className="blockly-button-box">
+          <button
+            type="button"
+            className="run-button"
+            onClick={() => this.runCode()}
+          >
+            Run Code!
+          </button>
+
+          <button
+            className="restart-button"
+            type="button"
+            onClick={() => this.restartLevel()}
+          >
+            Restart
+          </button>
+
+          <button
+            className="clear-board"
+            type="button"
+            onClick={() => this.clearBoard()}
+          >
+            Clear Board
+          </button>
+        </div>
       </div>
     )
   }

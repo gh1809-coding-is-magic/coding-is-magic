@@ -6,7 +6,8 @@ import BlocklyDrawer, {
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
 
-class LevelTwo extends React.Component {  constructor() {
+class LevelTwo extends React.Component {
+  constructor() {
     super()
 
     //State keeps track of outputted Unity messages and blocks in the workspace
@@ -24,7 +25,6 @@ class LevelTwo extends React.Component {  constructor() {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
-    // this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -47,13 +47,12 @@ class LevelTwo extends React.Component {  constructor() {
   }
 
   shouldComponentUpdate() {
-      return false;
+    return false
   }
 
   render() {
     return (
       <div>
-
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.move, this.turn, this.forLoops]}
@@ -79,6 +78,32 @@ class LevelTwo extends React.Component {  constructor() {
             toolboxPosition: 'start'
           }}
         />
+
+        <div className="blockly-button-box">
+          <button
+            type="button"
+            className="run-button"
+            onClick={() => this.runCode()}
+          >
+            Run Code!
+          </button>
+
+          <button
+            className="restart-button"
+            type="button"
+            onClick={() => this.restartLevel()}
+          >
+            Restart
+          </button>
+
+          <button
+            className="clear-board"
+            type="button"
+            onClick={() => this.clearBoard()}
+          >
+            Clear Board
+          </button>
+        </div>
       </div>
     )
   }

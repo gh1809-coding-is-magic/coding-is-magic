@@ -10,8 +10,6 @@ import {runInThisContext} from 'vm'
 import LevelOne from './LevelOne'
 import LevelTwo from './LevelTwo'
 
-
-
 class BlocklyWorkspace extends React.Component {
   constructor() {
     super()
@@ -75,41 +73,26 @@ class BlocklyWorkspace extends React.Component {
       <div id="blockly-content">
         <script src="blockly_compressed.js" />
         <script src="javascript_compressed.js" />
-        {this.state.counter === 0 ? <LevelOne runCode={this.props.runCode} unitySendMessage={this.props.unitySendMessage}/> : <LevelTwo runCode={this.props.runCode} unitySendMessage={this.props.unitySendMessage}/>}
-        <div className="blockly-button-box">
-          <button
-            type="button"
-            className="run-button"
-            onClick={() => this.runCode()}
-          >
-            Run Code!
-          </button>
-
-          <button
-            className="restart-button"
-            type="button"
-            onClick={() => this.restartLevel()}
-          >
-            Restart
-          </button>
-
-          <button
-            className="clear-board"
-            type="button"
-            onClick={() => this.clearBoard()}
-          >
-            Clear Board
-          </button>
-
-          <button
-            type="button"
-            className="next-button"
-            onClick={() => this.setState({counter: this.state.counter + 1})}
-          >
-            Next
-          </button>
-        </div>
+        {this.state.counter === 0 ? (
+          <LevelOne
+            runCode={this.props.runCode}
+            unitySendMessage={this.props.unitySendMessage}
+          />
+        ) : (
+          <LevelTwo
+            runCode={this.props.runCode}
+            unitySendMessage={this.props.unitySendMessage}
+          />
+        )}
+        <button
+          type="button"
+          className="next-button"
+          onClick={() => this.setState({counter: this.state.counter + 1})}
+        >
+          Next
+        </button>
       </div>
+      // </div>
     )
   }
 }
