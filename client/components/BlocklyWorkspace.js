@@ -25,19 +25,33 @@ class BlocklyWorkspace extends React.Component {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
+    this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
     console.log('State of current code: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
-    eval(this.state.currCode)
+    //called in block function to delay each sendMessage
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    };
+    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; ();');
   }
 
   restartLevel() {
     eval(this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne"))
   }
 
+  // clearBoard(){
+  //   this.setState({
+  //     currWorkspace: ''
+  //   })
+  // }
+
+    clearBoard(){
+      this.state.currWorkspace.clear();
+  }
   //False to prevent placed blocks from disappearing with each new state change
   shouldComponentUpdate() {
     return false
@@ -54,6 +68,7 @@ class BlocklyWorkspace extends React.Component {
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.helloWorld, this.forLoops, this.turn]}
+          //workspace={this.state.currWorkspace}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
@@ -62,12 +77,7 @@ class BlocklyWorkspace extends React.Component {
           injectOptions={{
             horizontalLayout: 'false',
             zoom: {
-              controls: true,
-              wheel: true,
-              startScale: 1.0,
-              maxScale: 3,
-              minScale: 0.3,
-              scaleSpeed: 1.2
+              startScale: 2,
             },
             grid: {
               spacing: 20,
@@ -75,18 +85,19 @@ class BlocklyWorkspace extends React.Component {
               colour: '#ccc',
               snap: true
             },
+            maxBlocks: 5,
             scrollbars: false,
             toolboxPosition: 'start'
           }}
         >
-          <Category name="Variables" custom="VARIABLE" />
-          <Category name="Values">
-            <Block type="math_number" />
-            <Block type="text" />
-            <Block type="controls_if" />
-            <Block type="controls_whileUntil" />
-            <Block type="controls_for" />
-          </Category>
+          {/* <Category name="Variables" custom="VARIABLE"> */}
+          {/* <Category name="Values"> */}
+            {/* <Block type="math_number" /> */}
+            {/* <Block type="text" /> */}
+            {/* <Block type="controls_if" /> */}
+            {/* <Block type="controls_whileUntil" /> */}
+            {/* <Block type="controls_for" /> */}
+          {/* </Category> */}
         </BlocklyDrawer>
         <div className="blockly-button-box">
           <button
@@ -99,8 +110,19 @@ class BlocklyWorkspace extends React.Component {
           >
             Run Code!
           </button>
-          <button className="restart-button" type="button" onClick={() => this.restartLevel()}>
-            Restart
+          
+          <button 
+          className="restart-button" 
+          type="button" 
+          onClick={() => this.restartLevel()}>
+          Restart
+          </button>
+
+          <button 
+          className="clear-board" 
+          type="button" 
+          onClick={() => this.clearBoard()}>
+          Clear Board
           </button>
 
           <button
@@ -109,6 +131,7 @@ class BlocklyWorkspace extends React.Component {
           >
             Next
           </button>
+
         </div>
       </div>
     )
