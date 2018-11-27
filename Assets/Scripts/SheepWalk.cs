@@ -87,9 +87,10 @@ public class SheepWalk : MonoBehaviour
         }
         if (other.gameObject.name == "Win")
         {
-            move = false;
+            anim.SetBool("isWalking", false);
             anim.SetBool("isWin", true);
             ps.Play();
+            move = false;
         }
     }
 }
