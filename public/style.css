@@ -135,14 +135,15 @@ li {
   border-radius: 8px;
   background-color: #008CBA;
   color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 2em;
-  margin-right: .4em;
   float: right;
-  right: -225px;
+  bottom: 6.5em;
   position: relative;
   outline: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 3px;
+  margin-right: 1em;
+  padding-bottom: 3px;
   border: 2px solid #017196;
 }
 

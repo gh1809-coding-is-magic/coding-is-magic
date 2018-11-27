@@ -6,6 +6,8 @@ import BlocklyDrawer, {
   workspaceXML
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
+import LevelOne from './LevelOne'
+import LevelTwo from './LevelTwo'
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -14,18 +16,19 @@ class BlocklyWorkspace extends React.Component {
     //State keeps track of outputted Unity messages and blocks in the workspace
     this.state = {
       currCode: '',
-      currWorkspace: ''
+      currWorkspace: '',
+      counter: 0
     }
 
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
-    this.helloWorld = move1()
+    this.move = move1()
     this.forLoops = forLoop()
     this.turn = turn()
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
-    this.clearBoard = this.clearBoard.bind(this)
+    // this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -34,13 +37,17 @@ class BlocklyWorkspace extends React.Component {
     console.log('Type: ', typeof this.state.currCode)
     //called in block function to delay each sendMessage
     function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    };
-    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; ();');
+      return new Promise(resolve => setTimeout(resolve, ms))
+    }
+    eval(
+      'const runBlocklyCode = async () => {' +
+        this.state.currCode +
+        '}; runBlocklyCode();'
+    )
   }
 
   restartLevel() {
-    eval(this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne"))
+    eval(this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne'))
   }
 
   // clearBoard(){
@@ -49,91 +56,42 @@ class BlocklyWorkspace extends React.Component {
   //   })
   // }
 
-    clearBoard(){
-      this.state.currWorkspace.clear();
-  }
+  //   clearBoard(){
+  //     this.state.currWorkspace.clear();
+  // }
   //False to prevent placed blocks from disappearing with each new state change
-  shouldComponentUpdate() {
-    return false
-  }
+
+  // shouldComponentUpdate() {
+  //   return false
+  // }
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
-    console.log('Move1: ', move1)
-    console.log('Hello world: ', this.helloWorld)
+    console.log('counter', this.state.counter)
     return (
       <div id="blockly-content">
         <script src="blockly_compressed.js" />
         <script src="javascript_compressed.js" />
-        <BlocklyDrawer
-          className="blockly-drawer"
-          tools={[this.helloWorld, this.forLoops, this.turn]}
-          //workspace={this.state.currWorkspace}
-          onChange={(code, workspace) => {
-            console.log('CHANGING THE CODE: ', code)
-            this.setState({currCode: code, currWorkspace: workspace})
-          }}
-          style={{minHeight: '75vh', width: '50vw'}}
-          injectOptions={{
-            horizontalLayout: 'false',
-            zoom: {
-              startScale: 2,
-            },
-            grid: {
-              spacing: 20,
-              length: 3,
-              colour: '#ccc',
-              snap: true
-            },
-            maxBlocks: 5,
-            scrollbars: false,
-            toolboxPosition: 'start'
-          }}
+        {this.state.counter === 0 ? (
+          <LevelOne
+            runCode={this.props.runCode}
+            unitySendMessage={this.props.unitySendMessage}
+          />
+        ) : (
+          <LevelTwo
+            runCode={this.props.runCode}
+            unitySendMessage={this.props.unitySendMessage}
+          />
+        )}
+        <button
+          type="button"
+          className="next-button"
+          onClick={() => this.setState({counter: this.state.counter + 1})}
         >
-          {/* <Category name="Variables" custom="VARIABLE"> */}
-          {/* <Category name="Values"> */}
-            {/* <Block type="math_number" /> */}
-            {/* <Block type="text" /> */}
-            {/* <Block type="controls_if" /> */}
-            {/* <Block type="controls_whileUntil" /> */}
-            {/* <Block type="controls_for" /> */}
-          {/* </Category> */}
-        </BlocklyDrawer>
-        <div className="blockly-button-box">
-          <button
-            type="button"
-            className='run-button'
-            style={{
-
-            }}
-            onClick={() => this.runCode()}
-          >
-            Run Code!
-          </button>
-          
-          <button 
-          className="restart-button" 
-          type="button" 
-          onClick={() => this.restartLevel()}>
-          Restart
-          </button>
-
-          <button 
-          className="clear-board" 
-          type="button" 
-          onClick={() => this.clearBoard()}>
-          Clear Board
-          </button>
-
-          <button
-            type="button"
-            className='next-button'
-          >
-            Next
-          </button>
-
-        </div>
+          Next
+        </button>
       </div>
+      // </div>
     )
   }
 }

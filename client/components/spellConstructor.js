@@ -4,6 +4,7 @@ const spellConstructor = obj => {
   return () => ({
     name: obj.name,
     type: obj.type,
+    disabled: obj.diabled,
     category: obj.category,
     block: {
       init: function() {
@@ -66,7 +67,8 @@ export const forLoop = spellConstructor({
     ],
     output: 'String',
     colour: 270,
-    tooltip: 'Repeat an action to object as many times as you set'
+    tooltip: 'Repeat an action to object as many times as you set',
+    setDisabled: true,
   },
   generator: function() {
     return `
