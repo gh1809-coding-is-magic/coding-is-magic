@@ -6,6 +6,9 @@ import BlocklyDrawer, {
   workspaceXML
 } from 'react-blockly-drawer'
 import {move1, forLoop, turn} from './spellConstructor'
+import { runInThisContext } from 'vm';
+
+let counter = 0;
 
 class BlocklyWorkspace extends React.Component {
   constructor() {
@@ -14,18 +17,20 @@ class BlocklyWorkspace extends React.Component {
     //State keeps track of outputted Unity messages and blocks in the workspace
     this.state = {
       currCode: '',
-      currWorkspace: ''
+      currWorkspace: '',
+      level: 0,
     }
 
     //Move block 1 step definition
     //*Should probably refactor this and place definition outside of constructor
-    this.helloWorld = move1()
+    this.move = move1()
     this.forLoops = forLoop()
     this.turn = turn()
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
     this.clearBoard = this.clearBoard.bind(this)
+    this.next = this.next.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -37,6 +42,11 @@ class BlocklyWorkspace extends React.Component {
       return new Promise(resolve => setTimeout(resolve, ms));
     };
     eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; ();');
+  }
+
+  next() {
+    console.log('this was clicked');
+    this.setState({level: counter++});
   }
 
   restartLevel() {
@@ -59,16 +69,14 @@ class BlocklyWorkspace extends React.Component {
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
-    console.log('Move1: ', move1)
-    console.log('Hello world: ', this.helloWorld)
+    const allLevels= [[this.move, this.turn], [this.move, this.turn, this.forLoops]];
     return (
       <div id="blockly-content">
         <script src="blockly_compressed.js" />
         <script src="javascript_compressed.js" />
         <BlocklyDrawer
           className="blockly-drawer"
-          tools={[this.helloWorld, this.forLoops, this.turn]}
-          //workspace={this.state.currWorkspace}
+          tools={allLevels[this.state.level]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
@@ -129,6 +137,7 @@ class BlocklyWorkspace extends React.Component {
           <button
             type="button"
             className='next-button'
+            onClick={this.next()}
           >
             Next
           </button>
