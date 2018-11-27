@@ -32,7 +32,11 @@ class BlocklyWorkspace extends React.Component {
   runCode() {
     console.log('State of current code: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
-    eval(this.state.currCode)
+    //called in block function to delay each sendMessage
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    };
+    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; ();');
   }
 
   restartLevel() {
