@@ -122,7 +122,7 @@ h2 {
   margin-top: 2em;
   margin-right: .4em;
   float: right;
-  right: -125px;
+  right: -225px;
   position: relative;
   outline: none;
   border: 2px solid #017196;
@@ -137,13 +137,13 @@ h2 {
   right: calc(50% - 3.5em);
   border-radius: 8px;
   background-color: #4CAF50;
-  font-size: 11pt;
+  font-size: 20pt;
   color: white;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 3px;
   padding-bottom: 3px;
-  margin-top: 2em;
+  margin-top: .75em;
   margin-left: 2em;
   border: 2px solid #357a38;
   outline: none;
@@ -174,5 +174,27 @@ h2 {
 .restart-button:hover {
   color: rgb(247, 144, 161);
   border: 2px solid rgb(207, 57, 82);
+  background-color: white;
+}
+
+
+.clear-board {
+  color:white;
+  font-size: 10pt;
+  border-radius: 7px;
+  background-color: rgb(179, 25, 255);
+  color: white;
+  outline: none;
+  border: 2px solid rgb(119, 0, 179);
+  left: 2em;
+  margin-top: 2em;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.clear-board:hover {
+  color: rgb(179, 25, 255);
+  border: 2px solid rgb(119, 0, 179);
   background-color: white;
 }

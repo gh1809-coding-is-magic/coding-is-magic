@@ -25,6 +25,7 @@ class BlocklyWorkspace extends React.Component {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
+    this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -38,6 +39,15 @@ class BlocklyWorkspace extends React.Component {
     eval(this.props.unitySendMessage("Sheep_Demo", "RestartLevelOne"))
   }
 
+  // clearBoard(){
+  //   this.setState({
+  //     currWorkspace: ''
+  //   })
+  // }
+
+    clearBoard(){
+      this.state.currWorkspace.clear();
+  }
   //False to prevent placed blocks from disappearing with each new state change
   shouldComponentUpdate() {
     return false
@@ -54,6 +64,7 @@ class BlocklyWorkspace extends React.Component {
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.helloWorld, this.forLoops, this.turn]}
+          //workspace={this.state.currWorkspace}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
             this.setState({currCode: code, currWorkspace: workspace})
@@ -99,8 +110,19 @@ class BlocklyWorkspace extends React.Component {
           >
             Run Code!
           </button>
-          <button className="restart-button" type="button" onClick={() => this.restartLevel()}>
-            Restart
+          
+          <button 
+          className="restart-button" 
+          type="button" 
+          onClick={() => this.restartLevel()}>
+          Restart
+          </button>
+
+          <button 
+          className="clear-board" 
+          type="button" 
+          onClick={() => this.clearBoard()}>
+          Clear Board
           </button>
 
           <button
@@ -109,6 +131,7 @@ class BlocklyWorkspace extends React.Component {
           >
             Next
           </button>
+
         </div>
       </div>
     )
