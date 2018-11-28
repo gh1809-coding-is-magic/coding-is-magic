@@ -47,23 +47,6 @@
       ShowScript();
     }
 
-    public void Update()
-    {
-      if (Input.GetKeyDown(KeyCode.Space))
-      {
-
-        var tag = RichTextTag.ParseNext("blah<color=red>boo</color");
-        LogTag(tag);
-        tag = RichTextTag.ParseNext("<color=blue>blue</color");
-        LogTag(tag);
-        tag = RichTextTag.ParseNext("No tag in here");
-        LogTag(tag);
-        tag = RichTextTag.ParseNext("No <color=blueblue</color tag here either");
-        LogTag(tag);
-        tag = RichTextTag.ParseNext("This tag is a closing tag </bold>");
-        LogTag(tag);
-      }
-    }
 
     private void HandlePrintNextClicked()
     {
