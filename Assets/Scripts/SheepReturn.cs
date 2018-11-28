@@ -7,7 +7,7 @@ public class SheepReturn : MonoBehaviour {
 	void Start() {
 		anim = GetComponent<Animator>();
 	}
-	void Returning() {
+	public void Returnings() {
         StartCoroutine(ReturnPosition());
     }
 	IEnumerator ReturnPosition() {
