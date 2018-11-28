@@ -41,7 +41,7 @@ class BlocklyWorkspace extends React.Component {
           className="next-button"
           onClick={() => this.setState({counter: this.state.counter + 1})}
         >
-          Next
+          Next Level
         </button>
       </div>
       // </div>
