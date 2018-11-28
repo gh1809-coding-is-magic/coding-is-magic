@@ -34,8 +34,7 @@ class LevelOne extends React.Component {
     // this.setState({currCode: this.state.currCode.concat(`this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition')`)})
     console.log('State of current: ', this.state.currCode)
     //called in block function to delay each sendMessage
-    eval(`${this.state.currCode};
-    setTimeout(() => this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition'), 0)`)
+    eval(`${this.state.currCode}; setTimeout(() => this.props.unitySendMessage('Sheep_Demo', 'Returning'), 0);`)
   }
 
   shouldComponentUpdate() {

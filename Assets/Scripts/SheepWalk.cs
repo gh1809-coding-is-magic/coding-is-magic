@@ -98,9 +98,4 @@ public class SheepWalk : MonoBehaviour
             move = false;
         }
     }
-
-    void ReturnPosition() {
-        transform.position = new Vector3(5.2f, .79f, .62f);
-        transform.eulerAngles = new Vector3(0, 228, 0);
-    }
 }
