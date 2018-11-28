@@ -21,6 +21,7 @@ public class SheepWalk : MonoBehaviour
         DeathMenu.SetActive(false);
         NextLevel.SetActive(false);
     }
+
     void Update()
     {
         float translation = Input.GetAxis("Vertical") * speed;
@@ -43,12 +44,12 @@ public class SheepWalk : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        // if (Input.GetKeyDown(KeyCode.Space)) {
-        //     TurnNinety();
-        // }
-        // if (Input.GetKeyDown(KeyCode.Q)) {
-        //     StartCoroutine(SheepMoveForward());
-        // }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            TurnNinety();
+        }
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            StartCoroutine(SheepMoveForward());
+        }
     }
 
     public void RestartLevelOne() {
@@ -96,5 +97,10 @@ public class SheepWalk : MonoBehaviour
             NextLevel.SetActive(true);
             move = false;
         }
+    }
+
+    void ReturnPosition() {
+        transform.position = new Vector3(5.2f, .79f, .62f);
+        transform.eulerAngles = new Vector3(0, 228, 0);
     }
 }
