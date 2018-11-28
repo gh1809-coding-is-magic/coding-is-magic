@@ -143,12 +143,16 @@ li {
   padding-right: 1em;
   padding-top: 3px;
   margin-right: 1em;
+  margin-top: 1em;
   padding-bottom: 3px;
   border: 2px solid #017196;
+  
 }
 
 .next-button:hover {
-  color: pink;
+  background-color: white;
+  color: #008CBA;
+  border: 2px solid #017196;
 }
 
 .run-button {
@@ -184,7 +188,7 @@ li {
   outline: none;
   border: 2px solid rgb(207, 57, 82);
   left: 1em;
-  margin-top: 2em;
+  margin-top: 1.5em;
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -197,7 +201,7 @@ li {
 }
 
 
-.clear-board {
+/* .clear-board {
   color:white;
   font-size: 10pt;
   border-radius: 7px;
@@ -216,4 +220,4 @@ li {
   color: rgb(179, 25, 255);
   border: 2px solid rgb(119, 0, 179);
   background-color: white;
-}
+} */

@@ -28,7 +28,7 @@ class BlocklyWorkspace extends React.Component {
 
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
-    this.clearBoard = this.clearBoard.bind(this)
+    //this.clearBoard = this.clearBoard.bind(this)
   }
 
   //Evaluates code on submit and sends message to Unity
@@ -88,7 +88,7 @@ class BlocklyWorkspace extends React.Component {
           className="next-button"
           onClick={() => this.setState({counter: this.state.counter + 1})}
         >
-          Next
+          Next Level
         </button>
       </div>
       // </div>

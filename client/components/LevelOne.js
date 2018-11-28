@@ -93,16 +93,16 @@ class LevelOne extends React.Component {
             type="button"
             onClick={() => this.restartLevel()}
           >
-            Restart
+            Restart Level
           </button>
 
-          <button
+          {/* <button
             className="clear-board"
             type="button"
             onClick={() => this.clearBoard()}
           >
             Clear Board
-          </button>
+          </button> */}
         </div>
       </div>
     )
