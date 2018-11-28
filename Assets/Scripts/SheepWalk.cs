@@ -24,32 +24,32 @@ public class SheepWalk : MonoBehaviour
 
     void Update()
     {
-        float translation = Input.GetAxis("Vertical") * speed;
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+        // float translation = Input.GetAxis("Vertical") * speed;
+        // float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 
-        translation *= Time.deltaTime;
-        rotation *= Time.deltaTime;
+        // translation *= Time.deltaTime;
+        // rotation *= Time.deltaTime;
 
-        if (move) {
-        transform.Translate(0, 0, translation);
-        transform.Rotate(0, rotation, 0);
-        }
+        // if (move) {
+        // transform.Translate(0, 0, translation);
+        // transform.Rotate(0, rotation, 0);
+        // }
 
-        if (translation != 0 || rotation != 0)
-        {
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
+        // if (translation != 0 || rotation != 0)
+        // {
+        //     anim.SetBool("isWalking", true);
+        // }
+        // else
+        // {
+        //     anim.SetBool("isWalking", false);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            TurnNinety();
-        }
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            StartCoroutine(SheepMoveForward());
-        }
+        // if (Input.GetKeyDown(KeyCode.Space)) {
+        //     TurnNinety();
+        // }
+        // if (Input.GetKeyDown(KeyCode.Q)) {
+        //     StartCoroutine(SheepMoveForward());
+        // }
     }
 
     public void RestartLevelOne() {
