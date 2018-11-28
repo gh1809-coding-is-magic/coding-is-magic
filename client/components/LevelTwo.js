@@ -13,8 +13,7 @@ class LevelTwo extends React.Component {
     //State keeps track of outputted Unity messages and blocks in the workspace
     this.state = {
       currCode: '',
-      currWorkspace: '',
-      counter: 0
+      currWorkspace: ''
     }
 
     //Move block 1 step definition
@@ -29,17 +28,21 @@ class LevelTwo extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    console.log('State of current code: ', this.state.currCode)
-    console.log('Type: ', typeof this.state.currCode)
-    //called in block function to delay each sendMessage
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
+    console.log('State of current: ', this.state.currCode)
+    if (
+      this.state.currCode ===
+      `for(let i=0;i<2; i++){  this.props.unitySendMessage("Sheep_Demo", "TurnNinety");}; for(let i=0;i<2; i++){  this.props.unitySendMessage("Sheep_Demo", "BlockyMove");};`
+    ) {
+      eval(`const runWin = () => {
+        ${this.state.currCode}}; runWin();`)
+    } else {
+      eval(
+        `const runBlocklyCode = () => {
+      ${
+        this.state.currCode
+      } this.props.unitySendMessage('Sheep_Demo', 'Returning')}; runBlocklyCode();`
+      )
     }
-    eval(
-      'const runBlocklyCode = async () => {' +
-        this.state.currCode +
-        '}; runBlocklyCode();'
-    )
   }
 
   restartLevel() {
@@ -69,6 +72,7 @@ class LevelTwo extends React.Component {
             grid: {
               spacing: 20,
               length: 3,
+              collapse: false,
               colour: '#ccc',
               snap: true
             },
