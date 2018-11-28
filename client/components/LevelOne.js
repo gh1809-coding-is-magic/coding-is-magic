@@ -14,7 +14,6 @@ class LevelOne extends React.Component {
     this.state = {
       currCode: '',
       currWorkspace: '',
-      counter: 0
     }
 
     //Move block 1 step definition
@@ -26,24 +25,23 @@ class LevelOne extends React.Component {
     this.runCode = this.runCode.bind(this)
     this.restartLevel = this.restartLevel.bind(this)
   }
+  restartLevel() {
+    this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne');
+  }
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    console.log('State of current code: ', this.state.currCode)
-    console.log('Type: ', typeof this.state.currCode)
-    //called in block function to delay each sendMessage
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
+    console.log('State of current: ', this.state.currCode)
+    if (this.state.currCode === `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");this.props.unitySendMessage("Sheep_Demo", "TurnNinety");this.props.unitySendMessage("Sheep_Demo", "BlockyMove");this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`) {
+      eval(`const runWin = () => {
+        ${this.state.currCode}}; runWin();`)
     }
-    eval(
-      'const runBlocklyCode = async () => {' +
-        this.state.currCode +
-        '}; runBlocklyCode();'
-    )
-  }
-
-  restartLevel() {
-    eval(this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne'))
+    else {
+      eval(
+        `const runBlocklyCode = () => {
+          ${this.state.currCode} this.props.unitySendMessage('Sheep_Demo', 'Returning')}; runBlocklyCode();`
+      )
+    }
   }
 
   shouldComponentUpdate() {
@@ -73,7 +71,7 @@ class LevelOne extends React.Component {
               snap: true
             },
             maxBlocks: 5,
-            disable: true,
+            collapse: true,
             scrollbars: false,
             toolboxPosition: 'start'
           }}

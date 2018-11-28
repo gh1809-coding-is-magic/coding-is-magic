@@ -31,9 +31,8 @@ export const move1 = spellConstructor({
     previousStatement: null,
     nextStatement: null
   },
-  generator: () =>
-    `await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`
-})
+
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`
 
 export const turn = spellConstructor({
   name: 'Turn',
@@ -47,9 +46,7 @@ export const turn = spellConstructor({
     previousStatement: null,
     nextStatement: null
   },
-  generator: () =>
-    `await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "TurnNinety");`
-})
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");`
 
 export const forLoop = spellConstructor({
   name: 'For',
@@ -73,10 +70,7 @@ export const forLoop = spellConstructor({
     setDisabled: true
   },
   generator: function() {
-    return `
-    for (let i = 0; i < ${this.getFieldValue('REPEATS')}; i++) {
-      ${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}
-    }`
+    return `for(let i=0;i<${this.getFieldValue('REPEATS')}; i++){${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}}`
   }
 })
 
