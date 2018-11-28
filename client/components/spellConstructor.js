@@ -33,6 +33,7 @@ export const move1 = spellConstructor({
   },
 
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`
+})
 
 export const turn = spellConstructor({
   name: 'Turn',
@@ -47,6 +48,7 @@ export const turn = spellConstructor({
     nextStatement: null
   },
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");`
+})
 
 export const forLoop = spellConstructor({
   name: 'For',
