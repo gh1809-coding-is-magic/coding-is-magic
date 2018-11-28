@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinSoundScript : MonoBehaviour
+public class DeathSoundScript : MonoBehaviour
 {
 
   [FMODUnity.EventRef]
   public string inputsound;
-  bool win;
+  bool fallIn;
 
   void Update()
   {
-
+ 
   }
 
 
@@ -22,11 +22,11 @@ public class WinSoundScript : MonoBehaviour
 
   void OnDisable()
   {
-    win = false;
+    fallIn = false;
   }
   void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.name == "Win" )
+    if (other.gameObject.name == "Plane" )
     {
 
       FMODUnity.RuntimeManager.PlayOneShot(inputsound);

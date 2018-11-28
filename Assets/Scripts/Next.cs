@@ -10,4 +10,7 @@ public class Next : MonoBehaviour
     {
         NextLevel.SetActive(false);
     }
+	public void MoveToLevelTwo() {
+	SceneManager.LoadScene("Level_2");
+	}
 }

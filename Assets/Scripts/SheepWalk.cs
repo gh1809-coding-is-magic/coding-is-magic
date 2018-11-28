@@ -44,7 +44,6 @@ public class SheepWalk : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        // to make sure the functionality is working: space to turn; q to move forward
         if (Input.GetKeyDown(KeyCode.Space)) {
             TurnNinety();
         }
@@ -98,5 +97,10 @@ public class SheepWalk : MonoBehaviour
             NextLevel.SetActive(true);
             move = false;
         }
+    }
+
+    void ReturnPosition() {
+        transform.position = new Vector3(5.2f, .79f, .62f);
+        transform.eulerAngles = new Vector3(0, 228, 0);
     }
 }
