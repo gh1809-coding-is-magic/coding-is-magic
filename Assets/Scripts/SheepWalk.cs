@@ -21,7 +21,6 @@ public class SheepWalk : MonoBehaviour
         DeathMenu.SetActive(false);
         NextLevel.SetActive(false);
     }
-
     void Update()
     {
         float translation = Input.GetAxis("Vertical") * speed;
