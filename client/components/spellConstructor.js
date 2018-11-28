@@ -24,30 +24,29 @@ export const move1 = spellConstructor({
   type: 'block_type',
   category: 'Movement',
   block: {
-    message0: 'Move 1 step',
+    message0: 'Move forward ⇒',
     // output: 'String',
     colour: 160,
-    tooltip: 'Moves the object 1 step',
+    tooltip: 'Moves forward one step',
     previousStatement: null,
     nextStatement: null
   },
+
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`
-})
 
 export const turn = spellConstructor({
   name: 'Turn',
-  type:'block_type',
+  type: 'block_type',
   category: 'Movement',
   block: {
-    message0: 'Turn 90 Degrees',
-   // output: 'String',
+    message0: 'Turn ↻',
+    // output: 'String',
     colour: 160,
-    tooltip: 'Turns the object 90 degrees',
+    tooltip: 'Rotates 90 degrees clockwise.',
     previousStatement: null,
     nextStatement: null
   },
   generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");`
-})
 
 export const forLoop = spellConstructor({
   name: 'For',
@@ -67,8 +66,8 @@ export const forLoop = spellConstructor({
     ],
     output: 'String',
     colour: 270,
-    tooltip: 'Repeat an action to object as many times as you set',
-    setDisabled: true,
+    tooltip: 'Repeats an action as many times as you set',
+    setDisabled: true
   },
   generator: function() {
     return `for(let i=0;i<${this.getFieldValue('REPEATS')}; i++){${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}}`
