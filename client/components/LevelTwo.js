@@ -13,7 +13,7 @@ class LevelTwo extends React.Component {
     //State keeps track of outputted Unity messages and blocks in the workspace
     this.state = {
       currCode: '',
-      currWorkspace: '',
+      currWorkspace: ''
     }
 
     //Move block 1 step definition
@@ -28,19 +28,21 @@ class LevelTwo extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    //State of current code:  await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");
-    // this.setState({currCode: this.state.currCode.concat(`this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition');`)})
     console.log('State of current: ', this.state.currCode)
-    console.log('Type: ', typeof this.state.currCode)
-    //called in block function to delay each sendMessage
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
+    if (
+      this.state.currCode ===
+      `for(let i=0;i<2; i++){  this.props.unitySendMessage("Sheep_Demo", "TurnNinety");}; for(let i=0;i<2; i++){  this.props.unitySendMessage("Sheep_Demo", "BlockyMove");};`
+    ) {
+      eval(`const runWin = () => {
+        ${this.state.currCode}}; runWin();`)
+    } else {
+      eval(
+        `const runBlocklyCode = () => {
+      ${
+        this.state.currCode
+      } this.props.unitySendMessage('Sheep_Demo', 'Returning')}; runBlocklyCode();`
+      )
     }
-    eval(
-      'const runBlocklyCode = async () => {' +
-        this.state.currCode +
-        '}; runBlocklyCode();'
-    )
   }
 
   restartLevel() {
@@ -59,7 +61,7 @@ class LevelTwo extends React.Component {
           tools={[this.move, this.turn, this.forLoops]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
-            this.setState({currCode: code, currWorkspace: workspace.concat(`await sleep(1250); this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition');`)})
+            this.setState({currCode: code, currWorkspace: workspace})
           }}
           style={{minHeight: '75vh', width: '50vw'}}
           injectOptions={{

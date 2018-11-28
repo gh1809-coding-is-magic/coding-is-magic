@@ -71,10 +71,7 @@ export const forLoop = spellConstructor({
     setDisabled: true,
   },
   generator: function() {
-    return `
-    for (let i = 0; i < ${this.getFieldValue('REPEATS')}; i++) {
-      ${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}
-    }`
+    return `for(let i=0;i<${this.getFieldValue('REPEATS')}; i++){${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}}`
   }
 })
 
