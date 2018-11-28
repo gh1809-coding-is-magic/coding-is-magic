@@ -31,7 +31,7 @@ export const move1 = spellConstructor({
     previousStatement: null,
     nextStatement: null
   },
-  generator: () => `setTimeout(() => this.props.unitySendMessage("Sheep_Demo", "BlockyMove"), 1250);`
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`
 })
 
 export const turn = spellConstructor({
@@ -46,7 +46,7 @@ export const turn = spellConstructor({
     previousStatement: null,
     nextStatement: null
   },
-  generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety"), 1250);`
+  generator: () => `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");`
 })
 
 export const forLoop = spellConstructor({

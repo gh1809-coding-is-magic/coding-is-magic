@@ -19,43 +19,7 @@ class BlocklyWorkspace extends React.Component {
       currWorkspace: '',
       counter: 0
     }
-
-    //Move block 1 step definition
-    //*Should probably refactor this and place definition outside of constructor
-    this.move = move1()
-    this.forLoops = forLoop()
-    this.turn = turn()
-
-    this.runCode = this.runCode.bind(this)
-    this.restartLevel = this.restartLevel.bind(this)
-    // this.clearBoard = this.clearBoard.bind(this)
   }
-
-  //Evaluates code on submit and sends message to Unity
-  runCode() {
-    this.setState({currCode: this.state.currCode.concat(this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition'))})
-    console.log('State of current: ', this.state.currCode)
-    console.log('Type: ', typeof this.state.currCode)
-    //called in block function to delay each sendMessage
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
-    }
-    eval(
-      'const runBlocklyCode = async () => {' +
-        this.state.currCode +
-        '}; runBlocklyCode();'
-    )
-  }
-
-  restartLevel() {
-    eval(this.props.unitySendMessage('Sheep_Demo', 'RestartLevelOne'))
-  }
-
-  // clearBoard(){
-  //   this.setState({
-  //     currWorkspace: ''
-  //   })
-  // }
 
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
@@ -65,12 +29,10 @@ class BlocklyWorkspace extends React.Component {
         <script src="javascript_compressed.js" />
         {this.state.counter === 0 ? (
           <LevelOne
-            runCode={this.props.runCode}
             unitySendMessage={this.props.unitySendMessage}
           />
         ) : (
           <LevelTwo
-            runCode={this.props.runCode}
             unitySendMessage={this.props.unitySendMessage}
           />
         )}

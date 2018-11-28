@@ -31,10 +31,17 @@ class LevelOne extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    // this.setState({currCode: this.state.currCode.concat(`this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition')`)})
     console.log('State of current: ', this.state.currCode)
-    //called in block function to delay each sendMessage
-    eval(`${this.state.currCode}; setTimeout(() => this.props.unitySendMessage('Sheep_Demo', 'Returning'), 0);`)
+    if (this.state.currCode === `this.props.unitySendMessage("Sheep_Demo", "TurnNinety");this.props.unitySendMessage("Sheep_Demo", "TurnNinety");this.props.unitySendMessage("Sheep_Demo", "BlockyMove");this.props.unitySendMessage("Sheep_Demo", "BlockyMove");`) {
+      eval(`const runWin = () => {
+        ${this.state.currCode}}; runWin();`)
+    }
+    else {
+      eval(
+        `const runBlocklyCode = () => {
+          ${this.state.currCode} this.props.unitySendMessage('Sheep_Demo', 'Returning')}; runBlocklyCode();`
+      )
+    }
   }
 
   shouldComponentUpdate() {

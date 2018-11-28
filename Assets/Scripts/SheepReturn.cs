@@ -11,9 +11,9 @@ public class SheepReturn : MonoBehaviour {
         StartCoroutine(ReturnPosition());
     }
 	IEnumerator ReturnPosition() {
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1f);
+		anim.SetBool("isWalking", false);
 		transform.position = new Vector3(5.2f, .79f, .62f);
         transform.eulerAngles = new Vector3(0, 228, 0);
-		anim.SetBool("isWalking", false);
 	}
 }
