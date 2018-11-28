@@ -14,7 +14,6 @@ class LevelTwo extends React.Component {
     this.state = {
       currCode: '',
       currWorkspace: '',
-      counter: 0
     }
 
     //Move block 1 step definition
@@ -29,7 +28,9 @@ class LevelTwo extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    console.log('State of current code: ', this.state.currCode)
+    //State of current code:  await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");await sleep(1250); this.props.unitySendMessage("Sheep_Demo", "BlockyMove");
+    // this.setState({currCode: this.state.currCode.concat(`this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition');`)})
+    console.log('State of current: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
     //called in block function to delay each sendMessage
     function sleep(ms) {
@@ -58,7 +59,7 @@ class LevelTwo extends React.Component {
           tools={[this.move, this.turn, this.forLoops]}
           onChange={(code, workspace) => {
             console.log('CHANGING THE CODE: ', code)
-            this.setState({currCode: code, currWorkspace: workspace})
+            this.setState({currCode: code, currWorkspace: workspace.concat(`await sleep(1250); this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition');`)})
           }}
           style={{minHeight: '75vh', width: '50vw'}}
           injectOptions={{
@@ -69,6 +70,7 @@ class LevelTwo extends React.Component {
             grid: {
               spacing: 20,
               length: 3,
+              collapse: false,
               colour: '#ccc',
               snap: true
             },

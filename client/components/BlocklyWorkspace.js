@@ -33,7 +33,8 @@ class BlocklyWorkspace extends React.Component {
 
   //Evaluates code on submit and sends message to Unity
   runCode() {
-    console.log('State of current code: ', this.state.currCode)
+    this.setState({currCode: this.state.currCode.concat(this.props.unitySendMessage('Sheep_Demo', 'ReturnPosition'))})
+    console.log('State of current: ', this.state.currCode)
     console.log('Type: ', typeof this.state.currCode)
     //called in block function to delay each sendMessage
     function sleep(ms) {
@@ -56,18 +57,8 @@ class BlocklyWorkspace extends React.Component {
   //   })
   // }
 
-  //   clearBoard(){
-  //     this.state.currWorkspace.clear();
-  // }
-  //False to prevent placed blocks from disappearing with each new state change
-
-  // shouldComponentUpdate() {
-  //   return false
-  // }
-
   //Sets up Blockly workspace and updates state with each new block placement
   render() {
-    console.log('counter', this.state.counter)
     return (
       <div id="blockly-content">
         <script src="blockly_compressed.js" />

@@ -22,36 +22,35 @@ public class SheepWalk : MonoBehaviour
         NextLevel.SetActive(false);
     }
 
-    void Update()
-    {
-        float translation = Input.GetAxis("Vertical") * speed;
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+    // void Update()
+    // {
+    //     float translation = Input.GetAxis("Vertical") * speed;
+    //     float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 
-        translation *= Time.deltaTime;
-        rotation *= Time.deltaTime;
+    //     translation *= Time.deltaTime;
+    //     rotation *= Time.deltaTime;
 
-        if (move) {
-        transform.Translate(0, 0, translation);
-        transform.Rotate(0, rotation, 0);
-        }
+    //     if (move) {
+    //     transform.Translate(0, 0, translation);
+    //     transform.Rotate(0, rotation, 0);
+    //     }
 
-        if (translation != 0 || rotation != 0)
-        {
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
+    //     if (translation != 0 || rotation != 0)
+    //     {
+    //         anim.SetBool("isWalking", true);
+    //     }
+    //     else
+    //     {
+    //         anim.SetBool("isWalking", false);
+    //     }
 
-        // to make sure the functionality is working: space to turn; q to move forward
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            TurnNinety();
-        }
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            StartCoroutine(SheepMoveForward());
-        }
-    }
+    //     if (Input.GetKeyDown(KeyCode.Space)) {
+    //         TurnNinety();
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.Q)) {
+    //         StartCoroutine(SheepMoveForward());
+    //     }
+    // }
 
     public void RestartLevelOne() {
         SceneManager.LoadScene("Level_1");
@@ -98,5 +97,10 @@ public class SheepWalk : MonoBehaviour
             NextLevel.SetActive(true);
             move = false;
         }
+    }
+
+    void ReturnPosition() {
+        transform.position = new Vector3(5.2f, .79f, .62f);
+        transform.eulerAngles = new Vector3(0, 228, 0);
     }
 }
