@@ -6,7 +6,7 @@ class Main extends React.Component {
   render() {
     return (
       <div >
-        <img className="cass=image" src="./cass2.PNG">
+        <img className="cass-image" src="./cass2.PNG">
         </img>
       </div>
     )

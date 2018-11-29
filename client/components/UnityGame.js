@@ -23,19 +23,18 @@ class UnityGame extends React.Component {
   render() {
     return (
       <div>
-        <Main />
+        {/* <Main /> */}
         <div id="mobile-message">
           Not mobile or tablet compatible. Please view on a desktop!
         </div>
-        {/* <div id="browser-container">
+        <div id="browser-container">
           <div id="inner-unity">
             <Unity unityContent={this.unityContent} />
-            {/* <Unity src="Build/Build/Build.json" loader="Build/Build/UnityLoader.js" /> */}
-          {/* </div> */}
-           {/* <div id="inner-blockly">
+          </div>
+           <div id="inner-blockly">
              <BlocklyWorkspace unitySendMessage={this.unitySendMessage} />
            </div>
-         </div> */}
+         </div>
       </div>
     )
   }
