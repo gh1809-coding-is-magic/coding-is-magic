@@ -66,7 +66,7 @@ export const forLoop = spellConstructor({
         name: 'STATEMENTS'
       }
     ],
-    output: 'String',
+    // output: 'String',
     colour: 270,
     tooltip: 'Repeats an action as many times as you set',
     setDisabled: true

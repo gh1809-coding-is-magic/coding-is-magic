@@ -32,7 +32,7 @@ class LevelTwo extends React.Component {
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-    eval('const runBlocklyCode = async () => {' + this.state.currCode + '}; runBlocklyCode();');
+    eval(`const runBlocklyCode = async () => {${this.state.currCode} await sleep(1250); await this.props.unitySendMessage("Sheep_Demo", "TerminateCode")}; runBlocklyCode();`)
   }
 
   restartLevel() {

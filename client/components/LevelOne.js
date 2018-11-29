@@ -35,7 +35,7 @@ class LevelOne extends React.Component {
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-    eval(`const runBlocklyCode = async () => {${this.state.currCode}; await sleep(200); await this.props.unitySendMessage('Sheep_Demo', 'TerminateCode')}; runBlocklyCode();`)
+    eval(`const runBlocklyCode = async () => {${this.state.currCode} await sleep(1250); await this.props.unitySendMessage("Sheep_Demo", "TerminateCode")}; runBlocklyCode();`)
   }
 
   shouldComponentUpdate() {
