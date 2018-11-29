@@ -40,7 +40,7 @@ export const turn = spellConstructor({
   type: 'block_type',
   category: 'Movement',
   block: {
-    message0: 'Turn ↻',
+    message0: 'Turn 90 degrees ↻',
     // output: 'String',
     colour: 160,
     tooltip: 'Rotates 90 degrees clockwise.',
@@ -72,7 +72,9 @@ export const forLoop = spellConstructor({
     setDisabled: true
   },
   generator: function() {
-    return `for(let i=0;i<${this.getFieldValue('REPEATS')}; i++){${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}}`
+    return `for(let i=0;i<${this.getFieldValue(
+      'REPEATS'
+    )}; i++){${Blockly.JavaScript.statementToCode(this, 'STATEMENTS')}}`
   }
 })
 
