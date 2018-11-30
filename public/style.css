@@ -132,20 +132,20 @@ li {
 
 .next-button {
   color:white;
-  font-size: 10pt;
+  font-size: 18pt;
   border-radius: 8px;
   background-color: #008CBA;
   color: white;
   float: right;
-  bottom: 6.5em;
   position: relative;
   outline: none;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 3px;
+  bottom: 6em;
   margin-right: 1em;
-  margin-top: 1em;
-  padding-bottom: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 2em;
+  padding-bottom: 5px;
+  padding-top: 5px;
   border: 2px solid #017196;
 
 }
@@ -167,7 +167,7 @@ li {
   padding-right: 1em;
   padding-top: 3px;
   padding-bottom: 3px;
-  margin-top: .75em;
+  margin-top: 1.8em;
   margin-left: 2em;
   border: 2px solid #357a38;
   outline: none;
@@ -182,14 +182,14 @@ li {
 
 .restart-button {
   color:white;
-  font-size: 10pt;
+  font-size: 18pt;
   border-radius: 7px;
   background-color: rgb(247, 144, 161);
   color: white;
   outline: none;
   border: 2px solid rgb(207, 57, 82);
   left: 1em;
-  margin-top: 1.5em;
+  margin-top: 2em;
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
