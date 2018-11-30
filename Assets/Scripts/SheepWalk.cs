@@ -15,6 +15,8 @@ public class SheepWalk : MonoBehaviour
     public bool move = true;
     public GameObject DeathMenu;
     public GameObject NextLevel;
+    public bool codeIsTerminated = false;
+    public bool win = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -45,10 +47,14 @@ public class SheepWalk : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            TurnNinety();
+           TerminateCode();
         }
         if (Input.GetKeyDown(KeyCode.Q)) {
             StartCoroutine(SheepMoveForward());
+        }
+        if (codeIsTerminated == true && win == false) {
+            ReturnPosition();
+            codeIsTerminated = false;
         }
     }
 
@@ -87,10 +93,10 @@ public class SheepWalk : MonoBehaviour
             transform.position = new Vector3(5.2f, .79f, .62f);
             transform.eulerAngles = new Vector3(0, 228, 0);
             DeathMenu.SetActive(true);
-            move = false;
         }
         if (other.gameObject.name == "Win")
         {
+            win = true;
             anim.SetBool("isWalking", false);
             anim.SetBool("isWin", true);
             ps.Play();
@@ -102,5 +108,8 @@ public class SheepWalk : MonoBehaviour
     void ReturnPosition() {
         transform.position = new Vector3(5.2f, .79f, .62f);
         transform.eulerAngles = new Vector3(0, 228, 0);
+    }
+    void TerminateCode() {
+        codeIsTerminated = true;
     }
 }

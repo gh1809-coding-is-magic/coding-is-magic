@@ -50,7 +50,7 @@ class LevelOne extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='blocklyToolboxDiv'>
         <BlocklyDrawer
           className="blockly-drawer"
           tools={[this.move, this.turn]}
@@ -59,6 +59,15 @@ class LevelOne extends React.Component {
             this.setState({currCode: code, currWorkspace: workspace})
           }}
           style={{minHeight: '75vh', width: '50vw'}}
+          appearance = {
+            {
+              categories:{
+                Movement: {
+                  colour: '270'
+                }
+              }
+            }
+          }
           injectOptions={{
             horizontalLayout: 'false',
             zoom: {
@@ -86,13 +95,13 @@ class LevelOne extends React.Component {
             Run Code!
           </button>
 
-          <button
+          {/* <button
             className="restart-button"
             type="button"
             onClick={() => this.restartLevel()}
           >
             Restart Level
-          </button>
+          </button> */}
 
           {/* <button
             className="clear-board"

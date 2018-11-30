@@ -92,13 +92,13 @@ class LevelTwo extends React.Component {
             Run Code!
           </button>
 
-          <button
+          {/* <button
             className="restart-button"
             type="button"
             onClick={() => this.restartLevel()}
           >
             Restart Level
-          </button>
+          </button> */}
 
           {/* <button
             className="clear-board"

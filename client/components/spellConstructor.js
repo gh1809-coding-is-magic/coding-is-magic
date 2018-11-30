@@ -52,6 +52,7 @@ export const turn = spellConstructor({
 
 export const forLoop = spellConstructor({
   name: 'For',
+  type: 'block_type',
   category: 'Loops',
   block: {
     message0: 'Do %2 %1 times.',
